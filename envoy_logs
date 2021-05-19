@@ -1,0 +1,10 @@
+2021-05-19T08:26:47.839554Z     warn    ca      ca request failed, starting attempt 1 in 90.657268ms
+2021-05-19T08:26:47.930532Z     warn    ca      ca request failed, starting attempt 2 in 213.57372ms
+2021-05-19T08:26:48.144405Z     warn    ca      ca request failed, starting attempt 3 in 387.840028ms
+2021-05-19T08:26:48.532612Z     warn    ca      ca request failed, starting attempt 4 in 721.691796ms
+2021-05-19T08:26:49.254669Z     warn    sds     failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.124.235.210:443: connect: connection timed out"
+2021-05-19T08:26:49.254755Z     warn    cache   slow generate secret lock: 1.536532189s
+2021-05-19T08:26:49.372461Z     warn    ca      ca request failed, starting attempt 1 in 91.312642ms
+2021-05-19T08:26:49.464106Z     warn    ca      ca request failed, starting attempt 2 in 181.782461ms
+2021-05-19T08:26:49.646163Z     warn    ca      ca request failed, starting attempt 3 in 421.969847ms
+2021-05-19T08:26:50.068492Z     warn    ca      ca request failed, starting attempt 4 in 816.862395ms
