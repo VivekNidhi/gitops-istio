@@ -1,0 +1,236 @@
+---
+# Source: cert-manager-istio-csr/templates/serviceaccount.yaml
+# This the csr for the Istiod <-> CSR <==> Vault
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/name: cert-manager-istio-csr
+    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/managed-by: Helm
+  name: cert-manager-istio-csr
+imagePullSecrets:
+  - name: artifactory-dockerconfig  
+---
+# Source: cert-manager-istio-csr/templates/clusterrole.yaml
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    app.kubernetes.io/name: cert-manager-istio-csr
+    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/managed-by: Helm
+  name: cert-manager-istio-csr
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - "configmaps"
+  verbs: ["get", "list", "create", "update", "watch"]
+- apiGroups:
+  - ""
+  resources:
+  - "namespaces"
+  verbs: ["get", "list", "watch"]
+- apiGroups:
+  - "authentication.k8s.io"
+  resources:
+  - "tokenreviews"
+  verbs:
+  - "create"
+---
+# Source: cert-manager-istio-csr/templates/clusterrolebinding.yaml
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    app.kubernetes.io/name: cert-manager-istio-csr
+    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/managed-by: Helm
+  name: cert-manager-istio-csr
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cert-manager-istio-csr
+subjects:
+- kind: ServiceAccount
+  name: cert-manager-istio-csr
+  namespace: default
+---
+# Source: cert-manager-istio-csr/templates/role.yaml
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    app.kubernetes.io/name: cert-manager-istio-csr
+    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/managed-by: Helm
+  name: cert-manager-istio-csr
+  namespace: istio-system
+rules:
+- apiGroups:
+  - "cert-manager.io"
+  resources:
+  - "certificaterequests"
+  verbs:
+  - "get"
+  - "list"
+  - "create"
+  - "update"
+  - "delete"
+- apiGroups:
+  - "coordination.k8s.io"
+  resources:
+  - "leases"
+  verbs:
+  - "get"
+  - "create"
+  - "update"
+  - "watch"
+  - "list"
+- apiGroups: [""]
+  resources: ["events"]
+  verbs: ["create"]
+---
+# Source: cert-manager-istio-csr/templates/rolebinding.yaml
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cert-manager-istio-csr
+  namespace: istio-system
+  labels:
+    app.kubernetes.io/name: cert-manager-istio-csr
+    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/managed-by: Helm
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: cert-manager-istio-csr
+subjects:
+- kind: ServiceAccount
+  name: cert-manager-istio-csr
+  namespace: istio-system
+---
+# Source: cert-manager-istio-csr/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: cert-manager-istio-csr
+  labels:
+    app: cert-manager-istio-csr
+    app.kubernetes.io/name: cert-manager-istio-csr
+    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 443
+      targetPort: 6443
+      protocol: TCP
+      name: web
+  selector:
+    app: cert-manager-istio-csr
+---
+# Source: cert-manager-istio-csr/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cert-manager-istio-csr
+  labels:
+    app.kubernetes.io/name: cert-manager-istio-csr
+    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cert-manager-istio-csr
+  template:
+    metadata:
+      labels:
+        app: cert-manager-istio-csr
+    spec:
+      serviceAccountName: cert-manager-istio-csr
+      containers:
+      - name: cert-manager-istio-csr
+        image: "nwm-docker-repo.artifactory.platform.nwminfra.net/jetstack/cert-manager-istio-csr:v0.1.2-tst"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 6443
+        readinessProbe:
+          httpGet:
+            port: 6060
+            path: /readyz
+          initialDelaySeconds: 3
+          periodSeconds: 7
+        command: ["cert-manager-istio-csr"]
+        args:
+          - "--log-level=1"
+          - "--readiness-probe-port=6060"
+          - "--readiness-probe-path=/readyz"
+          - "--cluster-id=Kubernetes"
+          - "--serving-address=0.0.0.0:6443"
+          - "--serving-certificate-duration=24h"
+          - "--root-ca-configmap-name=istio-ca-root-cert"
+          - "--certificate-namespace=istio-system"
+          - "--issuer-group=cert-manager.io"
+          - "--issuer-kind=Issuer"
+          - "--issuer-name=istio-ca"
+          - "--trust-domain=cluster.local"
+          - "--max-client-certificate-duration=24h"
+          - "--preserve-certificate-requests=false"
+
+        resources:
+            {}
+---
+# Source: cert-manager-istio-csr/templates/certificate.yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  duration: 24h
+  renewBefore: 12h
+  secretName: istiod-tls
+  dnsNames:
+  - istiod.istio-system.svc
+  uris:
+    - spiffe://cluster.local/ns/istio-system/sa/istiod-service-account
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: istio-ca
+---
+# Cluster role binding for default pod security policy granting all authenticated users access
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: psp-istio-csr
+  namespace: istio-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: nwm:podsecuritypolicy:root
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: system:nodes
+# For all service accounts in the kube-system namespace
+- kind: ServiceAccount
+  name: cert-manager-istio-csr
+
