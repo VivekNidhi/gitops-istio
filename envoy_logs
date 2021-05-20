@@ -1,25 +1,8 @@
+Error from server (InternalError): Internal error occurred: failed calling webhook "sidecar-injector.istio.io": Post https://istiod.istio-system.svc:443/inject?timeout=30s: x509: certificate has expired or is not yet valid
 
-2021-05-19T15:24:04.173734Z     warn    sds     failed to warm certificate: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate is valid for cert-manager-istio-csr.cert-manager.svc, not cert-manager-istio-csr.nwm-cert-manager.svc"
-2021-05-19T15:24:12.843411Z     info    ads     ADS: new connection for node:sidecar~10.124.234.40~temp.prv1-example~prv1-example.svc.cluster.local-81
-2021-05-19T15:24:19.044860Z     info    ads     ADS: "@" sidecar~10.124.234.40~temp.prv1-example~prv1-example.svc.cluster.local-81 terminated rpc error: code = Canceled desc = context canceled
-2021-05-19T15:24:19.045118Z     warning envoy config    StreamSecrets gRPC config stream closed: 2, failed to generate secret for ROOTCA: failed to get root cert
-2021-05-19T15:24:29.054840Z     info    ads     ADS: new connection for node:sidecar~10.124.234.40~temp.prv1-example~prv1-example.svc.cluster.local-82
-2021-05-19T15:24:29.220385Z     warn    ca      ca request failed, starting attempt 1 in 94.419977ms
-2021-05-19T15:24:29.315098Z     warn    ca      ca request failed, starting attempt 2 in 206.300215ms
-2021-05-19T15:24:29.521742Z     warn    ca      ca request failed, starting attempt 3 in 391.267395ms
-2021-05-19T15:24:29.913528Z     warn    ca      ca request failed, starting attempt 4 in 867.080719ms
-2021-05-19T15:24:30.781240Z     info    ads     ADS: "@" sidecar~10.124.234.40~temp.prv1-example~prv1-example.svc.cluster.local-82 terminated rpc error: code = Canceled desc = context canceled
-2021-05-19T15:24:30.781574Z     warning envoy config    StreamSecrets gRPC config stream closed: 2, failed to generate secret for default: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate is valid for cert-manager-istio-csr.cert-manager.svc, not cert-manager-istio-csr.nwm-cert-manager.svc"
-2021-05-19T15:24:31.854699Z     info    ads     ADS: new connection for node:sidecar~10.124.234.40~temp.prv1-example~prv1-example.svc.cluster.local-83
-2021-05-19T15:24:38.055988Z     info    ads     ADS: "@" sidecar~10.124.234.40~temp.prv1-example~prv1-example.svc.cluster.local-83 terminated rpc error: code = Canceled desc = context canceled
-2021-05-19T15:24:38.056408Z     warning envoy config    StreamSecrets gRPC config stream closed: 2, failed to generate secret for ROOTCA: failed to get root cert
-2021-05-19T15:24:44.994858Z     info    ads     ADS: new connection for node:sidecar~10.124.234.40~temp.prv1-example~prv1-example.svc.cluster.local-84
-2021-05-19T15:24:45.212731Z     warn    ca      ca request failed, starting attempt 1 in 92.993709ms
-2021-05-19T15:24:45.306095Z     warn    ca      ca request failed, starting attempt 2 in 200.81568ms
-2021-05-19T15:24:45.507364Z     warn    ca      ca request failed, starting attempt 3 in 421.247082ms
-2021-05-19T15:24:45.929062Z     warn    ca      ca request failed, starting attempt 4 in 759.709193ms
-2021-05-19T15:24:46.689305Z     info    ads     ADS: "@" sidecar~10.124.234.40~temp.prv1-example~prv1-example.svc.cluster.local-84 terminated rpc error: code = Canceled desc = context canceled
-2021-05-19T15:24:46.689653Z     warning envoy config    StreamSecrets gRPC config stream closed: 2, failed to generate secret for default: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate is valid for cert-manager-istio-csr.cert-manager.svc, not cert-manager-istio-csr.nwm-cert-manager.svc"
-2021-05-19T15:24:47.046306Z     info    ads     ADS: new connection for node:sidecar~10.124.234.40~temp.prv1-example~prv1-example.svc.cluster.local-85
-2021-05-19T15:24:53.247737Z     info    ads     ADS: "@" sidecar~10.124.234.40~temp.prv1-example~prv1-example.svc.cluster.local-85 terminated rpc error: code = Canceled desc = context canceled
-2021-05-19T15:24:53.248172Z     warning envoy config    StreamSecrets gRPC config stream closed: 2, failed to generate secret for ROOTCA: failed to get root cert
+
+ kubectl -n istio-system get secret istiod-service-account-token -o jsonpath='{.data.root-cert\.pem}' | md5sum
+Error from server (NotFound): secrets "istiod-service-account-token" not found
+d41d8cd98f00b204e9800998ecf8427e  -
+kubectl get mutatingwebhookconfiguration istio-sidecar-injector -o yaml -o jsonpath='{.webhooks[0].clientConfig.caBundle}' | md5sum
+69beb1d019305e73946b0098d33bb1d9  -
