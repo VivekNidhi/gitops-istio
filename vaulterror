@@ -1,0 +1,2 @@
+ cert-manager  Error initializing issuer: error reading Kubernetes service account token from vault-issuer-token-lbw4g: 
+ error calling Vault server: Post "https://vault.platform.nwminfra.net/v1/auth/kube-cluster-1/login": x509: certificate signed by unknown authority
