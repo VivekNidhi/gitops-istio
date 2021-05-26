@@ -7,11 +7,10 @@ https://learn.hashicorp.com/tutorials/vault/kubernetes-cert-manager#configure-an
 
 
 
-
-* subject alternate name cert-manager-istio-csr.cert-manager.svc not allowed by this role
-17m         Normal    cert-manager.io   certificaterequest/cert-manager-istio-csr-zhrkt   Certificate request has been approved by cert-manager.io
-17m         Warning   SigningError      certificaterequest/cert-manager-istio-csr-zhrkt   Vault failed to sign certificate: failed to sign certificate by vault: Error making API request.
-
-URL: POST https://vault.platform.nwminfra.net/v1/proving/pki/sign/prv1_dot_gke_dot_gcp_dot_nwminfra_dot_net
-Code: 400. Errors:
+k get  cr  -n istio-system
+NAME                           APPROVED   DENIED   READY   ISSUER         REQUESTOR                                                   AGE
+cert-manager-istio-csr-4ld2g   True                True    vault-issuer   system:serviceaccount:cert-manager:cert-manager-istio-csr   148m
+k get  Issuer   -n istio-system -owide
+NAME           READY   STATUS           AGE
+vault-issuer   True    Vault verified   157m
 
