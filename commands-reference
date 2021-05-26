@@ -1,3 +1,15 @@
 Deleting Certificate Request Objects:
 ===========================================
 for i in $(kubectl get cr -n istio-system | awk {'print $1}'); do kubectl delete cr $i -n istio-system; done
+
+
+
+kubectl get MutatingWebhookConfiguration | awk '{print $1}' | grep -v NAME | xargs kubectl delete MutatingWebhookConfiguration
+
+kubectl get ValidatingWebhookConfiguration | awk '{print $1}' | grep -v NAME | xargs kubectl delete ValidatingWebhookConfiguration
+
+kubectl get Certificate --all-namespaces | awk '{print $1}' |  grep -v NAME | xargs kubectl delete Certificate
+
+kubectl get CertificateRequest --all-namespaces | awk '{print $1}' |  grep -v NAME | xargs kubectl delete CertificateRequest
+
+kubectl get Issuer --all-namespaces | awk '{print $1}' |  grep -v NAME | xargs kubectl delete Issuer
