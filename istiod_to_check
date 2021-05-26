@@ -1,1 +1,5 @@
 spiffe://cluster.local/ns/istio-system/sa/istiod-service-account
+
+
+
+nvoy config    StreamSecrets gRPC config stream closed: 2, failed to generate secret for ROOTCA: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.124.235.135:443: i/o timeout"
