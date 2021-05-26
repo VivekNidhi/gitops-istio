@@ -1,5 +1,7 @@
 .955738Z info http: TLS handshake error from 10.124.233.152:55680: remote error: tls: bad certificate
 
+http: TLS handshake error from 10.124.233.150:35202: remote error: tls: bad certificate
+
 
 https://learn.hashicorp.com/tutorials/vault/kubernetes-cert-manager#configure-an-issuer-and-generate-a-certificate
 
