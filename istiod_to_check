@@ -1,1 +1,10 @@
-021-05-27T10:01:08.255627Zserving_certificate "msg"="failed to fetch new serving certificate, retrying" "error"="failed to create serving CertificateRequest: Internal error occurred: failed calling webhook \"webhook.cert-manager.io\": Post https://cert-manager-webhook.nwm-cert-manager.svc:443/mutate?timeout=10s: service \"cert-manager-webhook\" not found"
+
+
+ k exec  temp  -n prv1-example  -c temp -it -- /bin/sh
+sh-4.2$ curl helloworld:80
+upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILEDsh-4.2$
+
+
+Envoy logs:
+
+[2021-05-27T14:45:50.465Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 52 - "-" "curl/7.29.0" "e62bf9b9-8ee6-4cef-98a6-0c89fcc60b62" "helloworld" "10.124.234.130:8080" outbound|80||helloworld.prv1-example.svc.cluster.local - 10.124.235.155:80 10.124.234.133:60930 - default
