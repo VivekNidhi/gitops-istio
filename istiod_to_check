@@ -1,5 +1,100 @@
-spiffe://cluster.local/ns/istio-system/sa/istiod-service-account
+ k get  cr istio-k5kvz   -n istio-system -o yaml
+apiVersion: cert-manager.io/v1
+kind: CertificateRequest
+metadata:
+  annotations:
+    istio.cert-manager.io/identities: spiffe://cluster.local/ns/prv1-example/sa/default
+  creationTimestamp: "2021-05-26T21:40:51Z"
+  generateName: istio-
+  generation: 1
+  name: istio-k5kvz
+  namespace: istio-system
+  resourceVersion: "39891838"
+  selfLink: /apis/cert-manager.io/v1/namespaces/istio-system/certificaterequests/istio-k5kvz
+  uid: c6f19bd0-c244-464d-b47c-c0ee50721e44
+spec:
+  duration: 24h0m0s
+  groups:
+  - system:serviceaccounts
+  - system:serviceaccounts:cert-manager
+  - system:authenticated
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: vault-issuer
+  request: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ29qQ0NBWW9DQVFBd0N6RUpNQWNHQTFVRUNoTUFNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QQpNSUlCQ2dLQ0FRRUEzeitPV0M5V3Fhd1M4WXlzRU5PWExJMERhYk4vWm1sdy95M0FjN3B1bTZXVVBiRE4xUkNZCnYvZzk2V0dqMUovaXR3RVBvMmFWSHlqOHhSazdHVjg5VThiZlVoQklVN3RnRCt0VmEwRnhrSGdhcTFrUDFEaXgKU0NZck9Nai90cFJoMEI0VHpnTG9vaHRJYXNjZ2JqSkdjWVlZVFc1MjBacENuMGFwQ3N6TDBkOU4zdHpZVTNLUQpxUjR4SzFPWGhXdzRBSkFxbjhmbFdTZlZXeHB6TFNWYU90bFZ0ZzRRYW9hU1RiNjdveVBCMkZUTzlsRTM2NURtCmFJTTRyTlR0SUdNNmZoSUV3Nk4xb2w2Mm1UQzhvUjdJenk1U1VCMFBRQ0wxNlltSTMyN0R0Q2Q1cWllcVoxNHQKeHF5L0NXa1VCdnRpTFNycWhrMnJEdjJ3Vzg0M3ZRTWcvUUlEQVFBQm9GSXdVQVlKS29aSWh2Y05BUWtPTVVNdwpRVEEvQmdOVkhSRUJBZjhFTlRBemhqRnpjR2xtWm1VNkx5OWpiSFZ6ZEdWeUxteHZZMkZzTDI1ekwzQnlkakV0ClpYaGhiWEJzWlM5ellTOWtaV1poZFd4ME1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQjl4RG5ZQlcyWDI5OGoKbHlxeFdTMk9USnVQakM2MDFGSnFJb0h6eURTYkJKN2xOZHRPWEMySTJMWmp0UGd6elpxbG9TZ3o1WnhlRkJrTAowUmtkaGkrSU55TFp6ZzVWWDlYZEZMU0NmL0FsTWxmWStmZkhrcUhEaWhEbmVkU05PRlZ0VGN1UmFBcE1YMUROCk1aNVM2dW9sVmhLaHhBQzMrNXhNZ3VBMG5rN1hBeW5NWkg3bXY3NTgwckVISUJENGZ0bXZoaGs4L0V3VU1uZTgKelZWenViT1J1U21IdTduclN6NVZxVEYxemowS1RTTHRHK0p6cU5RT1V2SmVWaXEvU256Rjd5NUdLNHRmbGx2aAovajQxREhaZURFRkJyRERjMm1sNkVEQTdRNy9kS1F0YmNCeG5RZ2lKb2FvZGdXMFBKZlNRTnRBbm1hZUxrY2c3CkUwTDBaRnEwCi0tLS0tRU5EIENFUlRJRklDQVRFIFJFUVVFU1QtLS0tLQo=
+  uid: b708a106-ec5b-4288-aea6-b6d4be9d8f45
+  usages:
+  - client auth
+  - server auth
+  username: system:serviceaccount:cert-manager:cert-manager-istio-csr
+status:
+  conditions:
+  - lastTransitionTime: "2021-05-26T21:40:51Z"
+    message: Certificate request has been approved by cert-manager.io
+    reason: cert-manager.io
+    status: "True"
+    type: Approved
+  - lastTransitionTime: "2021-05-26T21:40:51Z"
+    message: |-
+      Vault failed to sign certificate: failed to sign certificate by vault: Error making API request.
 
+      URL: POST https://vault.platform.nwminfra.net/v1/proving/pki/sign/prv1_dot_gke_dot_gcp_dot_nwminfra_dot_net
+      Code: 400. Errors:
 
+      * URI Subject Alternative Names were provided via CSR which are not valid for this role
+    reason: Failed
+    status: "False"
+    type: Ready
+  failureTime: "2021-05-26T21:40:51Z"
+[vivek_nidhi_natwestmarkets_com@dev-bstn-js ~]$ ^C
+[vivek_nidhi_natwestmarkets_com@dev-bstn-js ~]$ ^C
+[vivek_nidhi_natwestmarkets_com@dev-bstn-js ~]$ k get  cr istio-k5kvz   -n istio-system -o yaml
+apiVersion: cert-manager.io/v1
+kind: CertificateRequest
+metadata:
+  annotations:
+    istio.cert-manager.io/identities: spiffe://cluster.local/ns/prv1-example/sa/default
+  creationTimestamp: "2021-05-26T21:40:51Z"
+  generateName: istio-
+  generation: 1
+  name: istio-k5kvz
+  namespace: istio-system
+  resourceVersion: "39891838"
+  selfLink: /apis/cert-manager.io/v1/namespaces/istio-system/certificaterequests/istio-k5kvz
+  uid: c6f19bd0-c244-464d-b47c-c0ee50721e44
+spec:
+  duration: 24h0m0s
+  groups:
+  - system:serviceaccounts
+  - system:serviceaccounts:cert-manager
+  - system:authenticated
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: vault-issuer
+  request: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ29qQ0NBWW9DQVFBd0N6RUpNQWNHQTFVRUNoTUFNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QQpNSUlCQ2dLQ0FRRUEzeitPV0M5V3Fhd1M4WXlzRU5PWExJMERhYk4vWm1sdy95M0FjN3B1bTZXVVBiRE4xUkNZCnYvZzk2V0dqMUovaXR3RVBvMmFWSHlqOHhSazdHVjg5VThiZlVoQklVN3RnRCt0VmEwRnhrSGdhcTFrUDFEaXgKU0NZck9Nai90cFJoMEI0VHpnTG9vaHRJYXNjZ2JqSkdjWVlZVFc1MjBacENuMGFwQ3N6TDBkOU4zdHpZVTNLUQpxUjR4SzFPWGhXdzRBSkFxbjhmbFdTZlZXeHB6TFNWYU90bFZ0ZzRRYW9hU1RiNjdveVBCMkZUTzlsRTM2NURtCmFJTTRyTlR0SUdNNmZoSUV3Nk4xb2w2Mm1UQzhvUjdJenk1U1VCMFBRQ0wxNlltSTMyN0R0Q2Q1cWllcVoxNHQKeHF5L0NXa1VCdnRpTFNycWhrMnJEdjJ3Vzg0M3ZRTWcvUUlEQVFBQm9GSXdVQVlKS29aSWh2Y05BUWtPTVVNdwpRVEEvQmdOVkhSRUJBZjhFTlRBemhqRnpjR2xtWm1VNkx5OWpiSFZ6ZEdWeUxteHZZMkZzTDI1ekwzQnlkakV0ClpYaGhiWEJzWlM5ellTOWtaV1poZFd4ME1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQjl4RG5ZQlcyWDI5OGoKbHlxeFdTMk9USnVQakM2MDFGSnFJb0h6eURTYkJKN2xOZHRPWEMySTJMWmp0UGd6elpxbG9TZ3o1WnhlRkJrTAowUmtkaGkrSU55TFp6ZzVWWDlYZEZMU0NmL0FsTWxmWStmZkhrcUhEaWhEbmVkU05PRlZ0VGN1UmFBcE1YMUROCk1aNVM2dW9sVmhLaHhBQzMrNXhNZ3VBMG5rN1hBeW5NWkg3bXY3NTgwckVISUJENGZ0bXZoaGs4L0V3VU1uZTgKelZWenViT1J1U21IdTduclN6NVZxVEYxemowS1RTTHRHK0p6cU5RT1V2SmVWaXEvU256Rjd5NUdLNHRmbGx2aAovajQxREhaZURFRkJyRERjMm1sNkVEQTdRNy9kS1F0YmNCeG5RZ2lKb2FvZGdXMFBKZlNRTnRBbm1hZUxrY2c3CkUwTDBaRnEwCi0tLS0tRU5EIENFUlRJRklDQVRFIFJFUVVFU1QtLS0tLQo=
+  uid: b708a106-ec5b-4288-aea6-b6d4be9d8f45
+  usages:
+  - client auth
+  - server auth
+  username: system:serviceaccount:cert-manager:cert-manager-istio-csr
+status:
+  conditions:
+  - lastTransitionTime: "2021-05-26T21:40:51Z"
+    message: Certificate request has been approved by cert-manager.io
+    reason: cert-manager.io
+    status: "True"
+    type: Approved
+  - lastTransitionTime: "2021-05-26T21:40:51Z"
+    message: |-
+      Vault failed to sign certificate: failed to sign certificate by vault: Error making API request.
 
-nvoy config    StreamSecrets gRPC config stream closed: 2, failed to generate secret for ROOTCA: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.124.235.135:443: i/o timeout"
+      URL: POST https://vault.platform.nwminfra.net/v1/proving/pki/sign/prv1_dot_gke_dot_gcp_dot_nwminfra_dot_net
+      Code: 400. Errors:
+
+      * URI Subject Alternative Names were provided via CSR which are not valid for this role
+    reason: Failed
+    status: "False"
+    type: Ready
+  failureTime: "2021-05-26T21:40:51Z"
