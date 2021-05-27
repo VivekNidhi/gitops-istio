@@ -1,4 +1,15 @@
- k get  cr istio-k5kvz   -n istio-system -o yaml
+ k get cr  -n istio-system                                                                          NAME                           APPROVED   DENIED   READY   ISSUER         REQUESTOR                                                   AGE
+cert-manager-istio-csr-rrh84   True                True    vault-issuer   system:serviceaccount:cert-manager:cert-manager-istio-csr   16h
+istio-ggmsv                    True                False   vault-issuer   system:serviceaccount:cert-manager:cert-manager-istio-csr   50m
+istiod-bxjmg                   True                True    vault-issuer   system:serviceaccount:cert-manager:cert-manager             4h18m
+istiod-hw4v2                   True                True    vault-issuer   system:serviceaccount:cert-manager:cert-manager             16h
+
+
+
+
+
+
+k get  cr istio-k5kvz   -n istio-system -o yaml
 apiVersion: cert-manager.io/v1
 kind: CertificateRequest
 metadata:
