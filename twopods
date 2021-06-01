@@ -1,0 +1,5 @@
+ k exec temp1   -n prv1-example  -c temp1  -it --  curl temp2:80
+upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED[vivek_nidhi_natwestmarkets_com@dev-bstn-js ~]$ ./istioctl ps
+NAME                   CDS        LDS        EDS        RDS        ISTIOD                      VERSION
+temp1.prv1-example     SYNCED     SYNCED     SYNCED     SYNCED     istiod-5c7bbfcfd8-k2hmc     1.10.0
+temp2.prv1-example     SYNCED     SYNCED     SYNCED     SYNCED     istiod-5c7bbfcfd8-k2hmc     1.10.0
