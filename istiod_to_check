@@ -400,3 +400,7 @@ istiod-service-account-token-hrvcq         kubernetes.io/service-account-token  
 istiod-tls                                 kubernetes.io/tls                     3      5d23h
 vault-issuer-token-qc5rs                   kubernetes.io/service-account-token   3      4d
 
+
+
+ k exec temp1   -n prv1-example  -c temp1  -it --  curl temp2:8080
+upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED
