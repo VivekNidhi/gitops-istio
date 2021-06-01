@@ -13,3 +13,20 @@ kubectl get Certificate --all-namespaces | awk '{print $1}' |  grep -v NAME | xa
 kubectl get CertificateRequest --all-namespaces | awk '{print $1}' |  grep -v NAME | xargs kubectl delete CertificateRequest
 
 kubectl get Issuer --all-namespaces | awk '{print $1}' |  grep -v NAME | xargs kubectl delete Issuer
+
+
+kubectl get CertificateRequest -n istio-system | awk '{print $2}' |  grep -v NAME | xargs kubectl delete CertificateRequest -n istio-system
+
+
+ sleep 20; kubectl exec "$(kubectl get pod -l app=temp1 -n prv1-example -o jsonpath={.items..metadata.name})" -c istio-proxy -n foo -- openssl s_client -showcerts -connect temp2.prv1-example:80 
+
+
+ kubectl exec temp1   -n prv1-example  -c istio-proxy  -it --  openssl s_client -showcerts -connect temp2:80
+
+
+
+Certificate check on Side-car:
+==============================
+ k exec temp1   -n prv1-example  -c istio-proxy  -it -- /bin/sh
+
+ openssl s_client -showcerts -connect temp2:8080
