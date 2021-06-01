@@ -149,4 +149,238 @@ Verify return code: 19 (self signed certificate in certificate chain)
 2021-06-01T09:35:48.505840Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
 
 
+ curl localhost:15000/certs
+{
+ "certificates": [
+  {
+   "ca_cert": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
+     "subject_alt_names": [],
+     "days_until_expiration": "7287",
+     "valid_from": "2021-05-19T15:26:32Z",
+     "expiration_time": "2041-05-14T15:26:57Z"
+    }
+   ],
+   "cert_chain": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
+     "subject_alt_names": [
+      {
+       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
+      }
+     ],
+     "days_until_expiration": "0",
+     "valid_from": "2021-06-01T09:06:20Z",
+     "expiration_time": "2021-06-02T09:06:50Z"
+    }
+   ]
+  },
+  {
+   "ca_cert": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
+     "subject_alt_names": [],
+     "days_until_expiration": "7287",
+     "valid_from": "2021-05-19T15:26:32Z",
+     "expiration_time": "2041-05-14T15:26:57Z"
+    }
+   ],
+   "cert_chain": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
+     "subject_alt_names": [
+      {
+       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
+      }
+     ],
+     "days_until_expiration": "0",
+     "valid_from": "2021-06-01T09:06:20Z",
+     "expiration_time": "2021-06-02T09:06:50Z"
+    }
+   ]
+  },
+  {
+   "ca_cert": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
+     "subject_alt_names": [],
+     "days_until_expiration": "7287",
+     "valid_from": "2021-05-19T15:26:32Z",
+     "expiration_time": "2041-05-14T15:26:57Z"
+    }
+   ],
+   "cert_chain": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
+     "subject_alt_names": [
+      {
+       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
+      }
+     ],
+     "days_until_expiration": "0",
+     "valid_from": "2021-06-01T09:06:20Z",
+     "expiration_time": "2021-06-02T09:06:50Z"
+    }
+   ]
+  },
+  {
+   "ca_cert": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
+     "subject_alt_names": [],
+     "days_until_expiration": "7287",
+     "valid_from": "2021-05-19T15:26:32Z",
+     "expiration_time": "2041-05-14T15:26:57Z"
+    }
+   ],
+   "cert_chain": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
+     "subject_alt_names": [
+      {
+       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
+      }
+     ],
+     "days_until_expiration": "0",
+     "valid_from": "2021-06-01T09:06:20Z",
+     "expiration_time": "2021-06-02T09:06:50Z"
+    }
+   ]
+  },
+  {
+   "ca_cert": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
+     "subject_alt_names": [],
+     "days_until_expiration": "7287",
+     "valid_from": "2021-05-19T15:26:32Z",
+     "expiration_time": "2041-05-14T15:26:57Z"
+    }
+   ],
+   "cert_chain": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
+     "subject_alt_names": [
+      {
+       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
+      }
+     ],
+     "days_until_expiration": "0",
+     "valid_from": "2021-06-01T09:06:20Z",
+     "expiration_time": "2021-06-02T09:06:50Z"
+    }
+   ]
+  },
+  {
+   "ca_cert": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
+     "subject_alt_names": [],
+     "days_until_expiration": "7287",
+     "valid_from": "2021-05-19T15:26:32Z",
+     "expiration_time": "2041-05-14T15:26:57Z"
+    }
+   ],
+   "cert_chain": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
+     "subject_alt_names": [
+      {
+       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
+      }
+     ],
+     "days_until_expiration": "0",
+     "valid_from": "2021-06-01T09:06:20Z",
+     "expiration_time": "2021-06-02T09:06:50Z"
+    }
+   ]
+  },
+  {
+   "ca_cert": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
+     "subject_alt_names": [],
+     "days_until_expiration": "7287",
+     "valid_from": "2021-05-19T15:26:32Z",
+     "expiration_time": "2041-05-14T15:26:57Z"
+    }
+   ],
+   "cert_chain": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
+     "subject_alt_names": [
+      {
+       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
+      }
+     ],
+     "days_until_expiration": "0",
+     "valid_from": "2021-06-01T09:06:20Z",
+     "expiration_time": "2021-06-02T09:06:50Z"
+    }
+   ]
+  },
+  {
+   "ca_cert": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
+     "subject_alt_names": [],
+     "days_until_expiration": "7287",
+     "valid_from": "2021-05-19T15:26:32Z",
+     "expiration_time": "2041-05-14T15:26:57Z"
+    }
+   ],
+   "cert_chain": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
+     "subject_alt_names": [
+      {
+       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
+      }
+     ],
+     "days_until_expiration": "0",
+     "valid_from": "2021-06-01T09:06:20Z",
+     "expiration_time": "2021-06-02T09:06:50Z"
+    }
+   ]
+  },
+  {
+   "ca_cert": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
+     "subject_alt_names": [],
+     "days_until_expiration": "7287",
+     "valid_from": "2021-05-19T15:26:32Z",
+     "expiration_time": "2041-05-14T15:26:57Z"
+    }
+   ],
+   "cert_chain": [
+    {
+     "path": "\u003cinline\u003e",
+     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
+     "subject_alt_names": [
+      {
+       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
+      }
+     ],
+     "days_until_expiration": "0",
+     "valid_from": "2021-06-01T09:06:20Z",
+     "expiration_time": "2021-06-02T09:06:50Z"
 
