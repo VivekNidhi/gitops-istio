@@ -1,121 +1,111 @@
+ kubectl exec temp1   -n prv1-example  -c istio-proxy  -it --  openssl s_client -showcerts -connect temp2:80
+CONNECTED(00000005)
+depth=1 C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
+verify error:num=19:self signed certificate in certificate chain
+---
+Certificate chain
+ 0 s:C = GB, L = London, street = England, O = Natwest Markets, OU = Platform Engineering
+   i:C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
+-----BEGIN CERTIFICATE-----
+MIIF3DCCA8SgAwIBAgIUffMpuAbMvcW4zBcUWv2A8ORiGAYwDQYJKoZIhvcNAQEL
+BQAwgYkxCzAJBgNVBAYTAkdCMRAwDgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZM
+b25kb24xGDAWBgNVBAoTD05hdHdlc3QgTWFya2V0czEdMBsGA1UECxMUUGxhdGZv
+cm0gRW5naW5lZXJpbmcxHjAcBgNVBAMTFVByb3ZpbmcgVmF1bHQgUm9vdCBDQTAe
+Fw0yMTA2MDExNTE0MTlaFw0yMTA2MDIxNTE0NDlaMGkxCzAJBgNVBAYTAkdCMQ8w
+DQYDVQQHEwZMb25kb24xEDAOBgNVBAkTB0VuZ2xhbmQxGDAWBgNVBAoTD05hdHdl
+c3QgTWFya2V0czEdMBsGA1UECxMUUGxhdGZvcm0gRW5naW5lZXJpbmcwggEiMA0G
+CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC/ok1QaqwF1cLpIKSr0KyjNuuWFh3V
+uh54fhH8vcdX+siWwdEVoOQldCK2lR6AR5ClX78pGXnfbiwaHA5dDLqd6MYD8Cb+
+IErIin50DFomGBQ4rZ7rEBNOIzvVVhTtEYDr8F13WG7VkpP0yQ1x4S2AXhXsKoLw
+w06r/4xiCfRjr8Dsar2d8VG1kvOaF52m43DnzqbrftaEHPX1l+vsD7ZqR16Do0Fb
++0HUWYPGLU5k8MX5/7f2GrEcYBnhv1XxJO2BkDigi/Jh7m2Y/mU5kLgt3iZwmXiR
+Zw8j01sMbqRG2WqZbKs5Cf4WmERrTGv41PLwCYsvF7He3xgze6AiTz29AgMBAAGj
+ggFZMIIBVTAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsG
+AQUFBwMCMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFHq7TJbh3/GLJxJVErO7qLBd
+LT/OMB8GA1UdIwQYMBaAFEpyPyKn8M7qp8NsUJ0oHJiW4yCFMFAGCCsGAQUFBwEB
+BEQwQjBABggrBgEFBQcwAoY0aHR0cDovL3ZhdWx0LnBsYXRmb3JtLm53bWluZnJh
+Lm5ldC92MS9wcm92aW5nL3BraS9jYTA8BgNVHREENTAzhjFzcGlmZmU6Ly9jbHVz
+dGVyLmxvY2FsL25zL3BydjEtZXhhbXBsZS9zYS9kZWZhdWx0MEYGA1UdHwQ/MD0w
+O6A5oDeGNWh0dHA6Ly92YXVsdC5wbGF0Zm9ybS5ud21pbmZyYS5uZXQvdjEvcHJv
+dmluZy9wa2kvY3JsMA0GCSqGSIb3DQEBCwUAA4ICAQCpGeJNuA7gbojeiHeL8pKe
+wGD34tFD2f2I266EBHWi8kICkXKuleVTry1ClOCCrWXwQqOUQS8w6gzlq8bjT+/E
+EnBz9HPOmEJNWlIeC3pGAgE+YiOconylz8x7mxom902e78ep+DcVR3QoDfMK5tq6
+yQDW6tO3VyBQqJaFCf5zisQf17oPKJXg9vrTTUyk61Q8RIZPNzCaW4Bl7UUvKGaU
++crGzVqsj/iBjEAqeE+6MJLhMZLshggYVUwAjYxbVmeP8jGAN9tW70BWJAK+QRx5
+KMVCjz95f1RXxQEyqPc9gzSnHeoA7Lvh7N8AuF2sPTKDDhLfghhTlhDuiqIsuEEa
+at08e56MXsMioKIlWGG3LI/sKp97tN3w9cFgxZF/CZlsRaV2oPHyaTSY5lcn3lM9
+LihHfTspJEFaetw+N6Rb71dqX/vmq4EvyZGd0QHvZIBGsCxCoy4V90jRj4TnB6sz
+JmDbydZopVkI0Id1UI4MwCg3/yx3bw4yEjVI+iFIEmHkFAUJ1O+wJtFG2qehnq/t
+ZdDbXvp1yDCjsExeaGyam4pDgWVqEH20J0jICHeIrtWzvG4BfJAvCFzhgbOt0D8t
+B4n1pFGhUAL5epGcxjSxgJkeUg5qvqbb0a+cCschfcFq6sK8t/psH76ufgU1UQrn
+Qn4vKyoQ6CqU2O0IpkXAtg==
+-----END CERTIFICATE-----
+ 1 s:C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
+   i:C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
+-----BEGIN CERTIFICATE-----
+MIIGoTCCBImgAwIBAgIUN9a78xEP/vRr9SY5mitOH1lB2iAwDQYJKoZIhvcNAQEL
+BQAwgYkxCzAJBgNVBAYTAkdCMRAwDgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZM
+b25kb24xGDAWBgNVBAoTD05hdHdlc3QgTWFya2V0czEdMBsGA1UECxMUUGxhdGZv
+cm0gRW5naW5lZXJpbmcxHjAcBgNVBAMTFVByb3ZpbmcgVmF1bHQgUm9vdCBDQTAe
+Fw0yMTA1MTkxNTI2MzJaFw00MTA1MTQxNTI2NTdaMIGJMQswCQYDVQQGEwJHQjEQ
+MA4GA1UECBMHRW5nbGFuZDEPMA0GA1UEBxMGTG9uZG9uMRgwFgYDVQQKEw9OYXR3
+ZXN0IE1hcmtldHMxHTAbBgNVBAsTFFBsYXRmb3JtIEVuZ2luZWVyaW5nMR4wHAYD
+VQQDExVQcm92aW5nIFZhdWx0IFJvb3QgQ0EwggIiMA0GCSqGSIb3DQEBAQUAA4IC
+DwAwggIKAoICAQDd7/WXyPIJMVmCgO/HI6jANxnAvQa3ufTgf40jQkMiI5kjAtao
+7U/d+agSyzJyYshfUeoTqCGX/VaeOHcGIxNz6FFyuwUYFeVljUmvxzXLCXRpr3eA
+Qz9G6ghMIwVHjim7HH5iCfYBMyS74op9gSap7F4JKBl2d5Iw7f0oDW6OP4C5YYD0
+SMjiT2EHjKkE2eJ4XFOs6SDSe73HvFSHCSGoDNjduzLnZoJnUzaVI9iLCI/HwEbc
+cDh/beBa56GL2DtWAOF4I1RlSJIQVk7jqiWT7HO8mfvfgkFnw0xhJUGATM4cA/RU
+zPE1fJKIz4BH3CKsLcJjolxN7cclupQvEKKmDZn2ctCPALea06B+r3w3oiDQud+j
+CeWjgHPUHM6x+9ED2z3QqMup0g40it+zrzzunR4S5F7SGRQSRBPvB+SxA5oDdEJJ
+lzwn4TmOOPgfqxkCm2THqiDVWZU+CKgaFlk1yHrwzgAk73KaJmUcciSOh5UlIIM7
+GZMfHLW6qwHl4kLTf1rveg8R8OVGs1A3r2xXwK4KZdTPD0RWzXvXz4c7dEIwjxdL
+HmQjAsu2W1wy/Bo86pHSl98YlRdjzWeWexN1xIRsZP4EQTZLxnmmRWY/tc46W+d3
+vJmbNAJbwsXk7lfgTCDmq0h1M9uKl6IyHVgy41nrnOFQBkOKCRyFTSuiAwIDAQAB
+o4H+MIH7MA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQW
+BBRKcj8ip/DO6qfDbFCdKByYluMghTAfBgNVHSMEGDAWgBRKcj8ip/DO6qfDbFCd
+KByYluMghTBQBggrBgEFBQcBAQREMEIwQAYIKwYBBQUHMAKGNGh0dHA6Ly92YXVs
+dC5wbGF0Zm9ybS5ud21pbmZyYS5uZXQvdjEvcHJvdmluZy9wa2kvY2EwRgYDVR0f
+BD8wPTA7oDmgN4Y1aHR0cDovL3ZhdWx0LnBsYXRmb3JtLm53bWluZnJhLm5ldC92
+MS9wcm92aW5nL3BraS9jcmwwDQYJKoZIhvcNAQELBQADggIBAK7u4691W4AD0Bt4
+xATYhmCySWBO3QfGHQoZpIPvT0QZwdtFeCj0ncwUnzm+IhAZ6ZrqAoUBBIRlNrLv
+MsCt9VKONYxmb0h+i4iRp9OWGSN0SqJdJXxDF0NfDvEnXHl6eg/C7OMc6VWNraje
+sam/FZeGAMxy40xn6zrwh0ofhTe+vk2nRB9DzE0fnjNOj30Qf210ERw7DxgKZG23
+Pshs67wUFGUNWPaWwxYWwgHCeplnd7XtKDHdRH0J9ghQVC5tcFHCf+yQi7XzNixW
+xs99JPFM5oNMNAux59XVA93gFssYQVslJ1QNWQkziMY0mehbFvyCqxNWlMn1Uwsa
+1N4N7m9uihm5yOz3/s7RoPN+1YSBKM3Ye5xC9FyAitNYnldTdUsXLPmaZDLngLHN
+7Z2u5k8wCcAov9KXWovD1JD1NvLxWNVoHkWsvqtrEqqyAdIDH0BuAkib7zI2oP98
+S/UB9Q8gf4lrmR8AXtK9nsUt1qX4qltZQiHxCw/EOX1iFo/tFO8OCaLyFdoZPOo2
+oA+ha2yIXxOwJIcJnRSKiMdxDuPcEoWh42dBPrRq2gAOaVZjgXowrVGDiSRGwNSY
+jSH/AXbuxrA/K5FdZqWW9Q7QGtBran+BxE85aJdBxiZrjgx0YA5rRfAi8UVmrRQq
+JKwM/JgAI3m0wIrnDR0PvqzOQIA1
+-----END CERTIFICATE-----
+---
+Server certificate
+subject=C = GB, L = London, street = England, O = Natwest Markets, OU = Platform Engineering
 
-$ kubectl get cm istio-ca-root-cert -o jsonpath="{.data['root-cert\.pem']}" | step certificate inspect -
-Certificate:
-    Data:
-        Version: 3 (0x2)
-        Serial Number: 634565633720850014245369823118779079328248785051 (0x6f26e83a297cc63f7be562d409add0c5e996689b)
-    Signature Algorithm: SHA256-RSA
-        Issuer: CN=istio-ca-vault
-        Validity
-            Not Before: Mar 9 15:02:52 2021 UTC
-            Not After : Mar 7 15:03:22 2031 UTC
-        Subject: CN=istio-ca
-        Subject Public Key Info:
-            Public Key Algorithm: RSA
-                Public-Key: (2048 bit)
-                Modulus:
+issuer=C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
 
-
-
-$ istioctl proxy-config secret sleep-64d7d56698-lfc9z -n sample -o json | \
-jq '.dynamicActiveSecrets[0].secret.tlsCertificate.certificateChain.inlineBytes' | \
-sed 's/"//g' | base64 --decode | openssl x509 -noout -text
-Certificate:
-    Data:
-        Version: 3 (0x2)
-        Serial Number:
-            72:3f:1f:8a:58:67:2a:bb:80:e6:f4:9e:d5:2d:13:03:b3:59:49:93
-        Signature Algorithm: sha256WithRSAEncryption
-        Issuer: CN = Istio-ca Intermediate Authority1
-        Validity
-            Not Before: Mar  9 20:47:38 2021 GMT
-            Not After : Mar 10 20:48:08 2021 GMT
-        Subject: 
-        Subject Public Key Info:
-            Public Key Algorithm: rsaEncryption
-                RSA Public-Key: (2048 bit)
-                Modulus:
-                    00:b4:b5:ec:e6:85:69:9e:4d:da:20:98:1d:ea:33:
-                    39:89:69:24:c9:0d:2e:0a:18:80:6e:e4:0f:d6:8b:
-                    d5:16:ef:75:b9:5a:44:9a:12:f6:7a:7d:52:7b:27:
-                    7c:e3:3d:d5:3f:61:37:ee:43:78:b6:5f:5b:07:68:
-                    f4:a5:83:68:65:ee:38:97:9e:20:4e:d2:79:32:64:
-                    8c:95:42:25:f3:b7:23:5e:6c:64:f2:88:3b:b0:c4:
-                    81:4c:79:6c:93:19:79:d8:35:ba:06:0f:a1:5e:e3:
-                    56:b3:08:3e:4b:f8:51:26:65:15:e6:59:20:e9:15:
-                    c8:b5:9c:ea:c2:84:65:04:4c:1b:3a:89:58:75:b9:
-                    34:db:e7:cc:bc:58:ba:b7:8a:7c:4d:1a:59:eb:d8:
-                    f7:a8:84:7e:f1:8e:fa:ca:84:cd:f4:a9:2f:d8:9e:
-                    97:8c:61:54:e3:71:b9:7f:18:3a:3c:03:4f:55:c9:
-                    64:bf:7b:52:d5:47:33:00:5a:aa:b1:51:81:80:51:
-                    69:e5:8e:3e:9b:71:a3:e4:bc:bc:66:99:4b:88:dc:
-                    8d:90:4b:a6:8c:3d:e9:69:d2:ba:6a:63:51:30:ce:
-                    2b:24:71:7d:70:aa:25:ee:bf:5d:b3:8f:8e:49:b7:
-                    b9:c7:21:7c:e2:4d:64:82:f5:37:e8:f0:ef:c2:4c:
-                    1d:d3
-                Exponent: 65537 (0x10001)
-        X509v3 extensions:
-            X509v3 Key Usage: critical
-                Digital Signature, Key Encipherment, Key Agreement
-            X509v3 Extended Key Usage: 
-                TLS Web Server Authentication, TLS Web Client Authentication
-            X509v3 Subject Key Identifier: 
-                CD:92:C2:8E:B2:43:CB:21:44:7C:25:DB:91:52:F4:0B:F2:D6:43:F2
-            X509v3 Authority Key Identifier: 
-                keyid:60:F0:BF:BD:D9:4A:AB:4A:96:01:FD:67:82:74:64:A2:35:B4:BB:57
-
-            X509v3 Subject Alternative Name: critical
-                URI:spiffe://cluster.local/ns/sample/sa/sleep
-
-
-
-$ istioctl proxy-config secret sleep-64d7d56698-tb5gh -n sample -o json | \
-jq '.dynamicActiveSecrets[0].secret.tlsCertificate.certificateChain.inlineBytes' | \
-sed 's/"//g' | base64 --decode | openssl x509 -noout -text
-
-Certificate:
-    Data:
-        Version: 3 (0x2)
-        Serial Number:
-            54:14:82:4b:40:1e:4e:a1:d2:59:8f:65:9b:19:0e:a4:6f:de:42:e4
-        Signature Algorithm: sha256WithRSAEncryption
-        Issuer: CN = Istio-ca Intermediate Authority2
-        Validity
-            Not Before: Mar  9 20:47:38 2021 GMT
-            Not After : Mar 10 20:48:08 2021 GMT
-        Subject: 
-        Subject Public Key Info:
-            Public Key Algorithm: rsaEncryption
-
-                Exponent: 65537 (0x10001)
-        X509v3 extensions:
-            X509v3 Key Usage: critical
-                Digital Signature, Key Encipherment, Key Agreement
-            X509v3 Extended Key Usage: 
-                TLS Web Server Authentication, TLS Web Client Authentication
-            X509v3 Subject Key Identifier: 
-                4D:FA:40:E7:BC:68:D2:F3:71:A7:6D:68:A1:53:D9:74:0D:02:D9:F2
-            X509v3 Authority Key Identifier: 
-                keyid:F4:CD:09:38:E2:C2:2E:12:7A:A0:76:CB:F8:54:BB:D3:CE:E6:B5:4B
-
-            X509v3 Subject Alternative Name: critical
-                URI:spiffe://cluster.local/ns/sample/sa/sleep
-    Signature Algorithm: sha256WithRSAEncryption
-
-
-.955738Z info http: TLS handshake error from 10.124.233.152:55680: remote error: tls: bad certificate
-
-http: TLS handshake error from 10.124.233.150:35202: remote error: tls: bad certificate
-
-
-https://learn.hashicorp.com/tutorials/vault/kubernetes-cert-manager#configure-an-issuer-and-generate-a-certificate
-
-
-
-k get  cr  -n istio-system
-NAME                           APPROVED   DENIED   READY   ISSUER         REQUESTOR                                                   AGE
-cert-manager-istio-csr-4ld2g   True                True    vault-issuer   system:serviceaccount:cert-manager:cert-manager-istio-csr   148m
-k get  Issuer   -n istio-system -owide
-NAME           READY   STATUS           AGE
-vault-issuer   True    Vault verified   157m
-
+---
+Acceptable client certificate CA names
+C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
+Requested Signature Algorithms: ECDSA+SHA256:RSA-PSS+SHA256:RSA+SHA256:ECDSA+SHA384:RSA-PSS+SHA384:RSA+SHA384:RSA-PSS+SHA512:RSA+SHA512:RSA+SHA1
+Shared Requested Signature Algorithms: ECDSA+SHA256:RSA-PSS+SHA256:RSA+SHA256:ECDSA+SHA384:RSA-PSS+SHA384:RSA+SHA384:RSA-PSS+SHA512:RSA+SHA512
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 3879 bytes and written 417 bytes
+Verification error: self signed certificate in certificate chain
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Server public key is 2048 bit
+Secure Renegotiation IS NOT supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 19 (self signed certificate in certificate chain)
+---
+140169119850944:error:1409445C:SSL routines:ssl3_read_bytes:tlsv13 alert certificate required:../ssl/record/rec_layer_s3.c:1528:SSL alert number 116
+command terminated with exit code 1
