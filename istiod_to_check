@@ -384,3 +384,19 @@ Verify return code: 19 (self signed certificate in certificate chain)
      "valid_from": "2021-06-01T09:06:20Z",
      "expiration_time": "2021-06-02T09:06:50Z"
 
+
+
+
+ k get secret -n istio-system
+NAME                                       TYPE                                  DATA   AGE
+artifactory-dockerconfig                   kubernetes.io/dockerconfigjson        1      26d
+default-token-mrxjg                        kubernetes.io/service-account-token   3      26d
+istio-ca                                   kubernetes.io/tls                     3      4d3h
+istio-ca-secret                            istio.io/ca-root                      5      6d1h
+istio-cni-token-glplg                      kubernetes.io/service-account-token   3      5d1h
+istio-reader-service-account-token-vrgzd   kubernetes.io/service-account-token   3      5d1h
+istio-system-token-k5qtp                   kubernetes.io/service-account-token   3      26d
+istiod-service-account-token-hrvcq         kubernetes.io/service-account-token   3      5d1h
+istiod-tls                                 kubernetes.io/tls                     3      5d23h
+vault-issuer-token-qc5rs                   kubernetes.io/service-account-token   3      4d
+
