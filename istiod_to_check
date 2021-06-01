@@ -108,3 +108,45 @@ Early data was not sent
 Verify return code: 19 (self signed certificate in certificate chain)
 ---
 139860988731840:error:1409445C:SSL routines:ssl3_read_bytes:tlsv13 alert certificate required:../ssl/record/rec_layer_s3.c:1528:SSL alert number 116
+
+
+
+
+
+
+2021-06-01T09:06:48.869676Z     info    JWT policy is third-party-jwt
+2021-06-01T09:06:48.869686Z     info    Pilot SAN: [istiod.istio-system.svc]
+2021-06-01T09:06:48.869690Z     info    CA Endpoint cert-manager-istio-csr.cert-manager.svc:443, provider Citadel
+2021-06-01T09:06:48.869765Z     info    Using CA cert-manager-istio-csr.cert-manager.svc:443 cert with certs: var/run/secrets/istio/root-cert.pem
+2021-06-01T09:06:48.870058Z     info    citadelclient   Citadel client using custom root cert: cert-manager-istio-csr.cert-manager.svc:443
+2021-06-01T09:06:48.914228Z     info    ads     All caches have been synced up in 51.75431ms, marking server ready
+2021-06-01T09:06:48.914770Z     info    sds     SDS server for workload certificates started, listening on "./etc/istio/proxy/SDS"
+2021-06-01T09:06:48.914808Z     info    xdsproxy        Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2021-06-01T09:06:48.914872Z     info    sds     Start SDS grpc server
+2021-06-01T09:06:48.915389Z     info    Opening status port 15020
+2021-06-01T09:06:48.922058Z     info    Starting proxy agent
+2021-06-01T09:06:48.922093Z     info    Epoch 0 starting
+2021-06-01T09:06:48.924949Z     info    Envoy command: [-c etc/istio/proxy/envoy-rev0.json --restart-epoch 0 --drain-time-s 45 --drain-strategy immediate --parent-shut                                                                      down-time-s 60 --service-cluster temp1.prv1-example --service-node sidecar~10.124.234.160~temp1.prv1-example~prv1-example.svc.cluster.local --local-address-ip-version                                                                       v4 --bootstrap-version 3 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ     %l      envoy %n        %v -l warning --component-log-level misc:error --concurrency 2]
+2021-06-01T09:06:49.895471Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-01T09:06:49.931469Z     info    ads     ADS: new connection for node:sidecar~10.124.234.160~temp1.prv1-example~prv1-example.svc.cluster.local-1
+2021-06-01T09:06:49.931455Z     info    ads     ADS: new connection for node:sidecar~10.124.234.160~temp1.prv1-example~prv1-example.svc.cluster.local-2
+2021-06-01T09:06:51.045018Z     info    cache   generated new workload certificate      latency=2.130039327s ttl=23h59m58.955002639s
+2021-06-01T09:06:51.045082Z     info    cache   Root cert has changed, start rotating root cert
+2021-06-01T09:06:51.045104Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-01T09:06:51.045184Z     info    cache   returned workload trust anchor from cache       ttl=23h59m58.954821347s
+2021-06-01T09:06:51.045213Z     info    cache   returned workload trust anchor from cache       ttl=23h59m58.954803954s
+2021-06-01T09:06:51.045440Z     info    cache   returned workload certificate from cache        ttl=23h59m58.954568423s
+2021-06-01T09:06:51.045813Z     info    sds     SDS: PUSH       resource=ROOTCA
+2021-06-01T09:06:51.045943Z     info    sds     SDS: PUSH       resource=default
+2021-06-01T09:06:51.045991Z     info    cache   returned workload trust anchor from cache       ttl=23h59m58.954015423s
+2021-06-01T09:06:51.046013Z     info    sds     SDS: PUSH       resource=ROOTCA
+2021-06-01T09:06:52.768540Z     info    Initialization took 3.904585169s
+2021-06-01T09:06:52.768573Z     info    Envoy proxy is ready
+[2021-06-01T09:20:59.188Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.160:8080 10.124.234.160:39454 - -
+[2021-06-01T09:22:49.274Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CER                                                                      TIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 78 - "-" "curl/7.29.0" "460285d5-fd8a-4da9-a902-14573c56                                                                      9a33" "temp2:8080" "10.124.234.161:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.184:8080 10.124.234.160:54702 - default
+[2021-06-01T09:22:57.972Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CER                                                                      TIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 70 - "-" "curl/7.29.0" "c2b90ef2-8f75-4f28-968d-97dbebbb                                                                      3a8d" "temp2:8080" "10.124.234.161:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.184:8080 10.124.234.160:54774 - default
+2021-06-01T09:35:48.416714Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-01T09:35:48.505840Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+
+
+
