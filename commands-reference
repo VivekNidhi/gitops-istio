@@ -30,3 +30,10 @@ Certificate check on Side-car:
  k exec temp1   -n prv1-example  -c istio-proxy  -it -- /bin/sh
 
  openssl s_client -showcerts -connect temp2:8080
+ 
+ 
+ 
+ kubectl get cm istio-ca-root-cert -o jsonpath='{.data.root-cert\.pem}' -n <NAMESPACE> | openssl x509 -text -noout
+ 
+ 
+ 
