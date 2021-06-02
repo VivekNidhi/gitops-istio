@@ -1,2 +1,111 @@
- cert-manager  Error initializing issuer: error reading Kubernetes service account token from vault-issuer-token-lbw4g: 
- error calling Vault server: Post "https://vault.platform.nwminfra.net/v1/auth/kube-cluster-1/login": x509: certificate signed by unknown authority
+ kubectl exec temp1   -n prv1-example  -c istio-proxy  -it --  openssl s_client -showcerts -connect temp2:8080
+CONNECTED(00000005)
+depth=1 C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
+verify error:num=19:self signed certificate in certificate chain
+---
+Certificate chain
+ 0 s:C = GB, L = London, street = England, O = Natwest Markets, OU = Platform Engineering
+   i:C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
+-----BEGIN CERTIFICATE-----
+MIIF3DCCA8SgAwIBAgIUQLYI+L+SWILKIwKHmeKSq2skS7UwDQYJKoZIhvcNAQEL
+BQAwgYkxCzAJBgNVBAYTAkdCMRAwDgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZM
+b25kb24xGDAWBgNVBAoTD05hdHdlc3QgTWFya2V0czEdMBsGA1UECxMUUGxhdGZv
+cm0gRW5naW5lZXJpbmcxHjAcBgNVBAMTFVByb3ZpbmcgVmF1bHQgUm9vdCBDQTAe
+Fw0yMTA2MDIwODA3MzJaFw0yMTA2MDMwODA4MDJaMGkxCzAJBgNVBAYTAkdCMQ8w
+DQYDVQQHEwZMb25kb24xEDAOBgNVBAkTB0VuZ2xhbmQxGDAWBgNVBAoTD05hdHdl
+c3QgTWFya2V0czEdMBsGA1UECxMUUGxhdGZvcm0gRW5naW5lZXJpbmcwggEiMA0G
+CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCyIC14klUSLUxdvGndlcyTZ6xQBto4
+3wDbo6IwYRTBSKwEpqhP2uYw2/sU3ZxQwC1/+lqvESUu1g2sZCLHto135REnIlP2
+LgoGFZXV1Qer6sD8UsVu3tXhmAtqb9td9e1NFSs8YDhDfUKD0jLBio/r57a5//Qu
+/UjCuEYwi3/M6Fr98TcnjonkmQiRAHHPvuThAALf/R7PLqCg/S67Wj8l+o2s7s4f
+6W2/bz4I5L6DHLSEPD/RD8ai9/tyqZEGc3YEgAPcZ8i9Kp7g0HIrLqKUDfmG30xr
+7HcO3ucUbg2/wnjbheqJqA7o4qLcxw5fwzNn7LMPDeSnCtbR2pFfFBfNAgMBAAGj
+ggFZMIIBVTAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsG
+AQUFBwMCMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFP1wq9CSRtW00FunBR7d9wBJ
+ZMslMB8GA1UdIwQYMBaAFEpyPyKn8M7qp8NsUJ0oHJiW4yCFMFAGCCsGAQUFBwEB
+BEQwQjBABggrBgEFBQcwAoY0aHR0cDovL3ZhdWx0LnBsYXRmb3JtLm53bWluZnJh
+Lm5ldC92MS9wcm92aW5nL3BraS9jYTA8BgNVHREENTAzhjFzcGlmZmU6Ly9jbHVz
+dGVyLmxvY2FsL25zL3BydjEtZXhhbXBsZS9zYS9kZWZhdWx0MEYGA1UdHwQ/MD0w
+O6A5oDeGNWh0dHA6Ly92YXVsdC5wbGF0Zm9ybS5ud21pbmZyYS5uZXQvdjEvcHJv
+dmluZy9wa2kvY3JsMA0GCSqGSIb3DQEBCwUAA4ICAQA7quaMulsz0qBdJi47Y1AC
+8il6FXQqyMC3B8VT505UBaYqZfvLMQStVxLflUDs6oWdA9TFam+eg/Z8QJFqpNjQ
+hED3443dDet8V2pVs0zTTdtBQC0w5XJILkXkLg9NV0l75Z2jPseKxmEz+G+80Y2w
+KwKO1qFrvGeiGQkIj+3CwJcnsOK9HvzfvhypyTewViAVhi3H1Dreww4kq9bExE5E
+B9YD9HBZfJo2okBlKKS/AeAeVEE/RlpgDpK5cvLrYtkkeEudPU1JUwqXhiiu92OW
+ALSIZTly3qYkNKVdz8KqVC61Te+7cFmw2T3EZj/He5TT9p57+INlA2BrhDloAhvR
+NyJdpitShPoGAAzXreqIePhgNCrzsbcts8VgIKKSfA7Hauj716oWGgCxrMTikVOv
+CUowkCqL7p/Vg+zSIojGk8YHTAZ1a+EcGwuQitomayDLS9vxmVWMKIWCLBEniYCs
+yaSjxCN/c22vO9WTiFuzCjIkibU96OsZ5PmyEXfo64J68j8oT9epqXG6bF4A49ox
+V+nHSBvDkwIR8MFUVN43hIYs07dXMUjMYUSGOscVK6W07HeKm3l3NjkVj+z0oj6+
+hV/X5g4gzY9wYVzmVxY1N51x4FYoGT5jjAcY5FuJTc3ZvUYEdWXW0jBxpQ+PGP5G
+7pjJgMeZG+LpaAHyHIGT2A==
+-----END CERTIFICATE-----
+ 1 s:C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
+   i:C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
+-----BEGIN CERTIFICATE-----
+MIIGoTCCBImgAwIBAgIUN9a78xEP/vRr9SY5mitOH1lB2iAwDQYJKoZIhvcNAQEL
+BQAwgYkxCzAJBgNVBAYTAkdCMRAwDgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZM
+b25kb24xGDAWBgNVBAoTD05hdHdlc3QgTWFya2V0czEdMBsGA1UECxMUUGxhdGZv
+cm0gRW5naW5lZXJpbmcxHjAcBgNVBAMTFVByb3ZpbmcgVmF1bHQgUm9vdCBDQTAe
+Fw0yMTA1MTkxNTI2MzJaFw00MTA1MTQxNTI2NTdaMIGJMQswCQYDVQQGEwJHQjEQ
+MA4GA1UECBMHRW5nbGFuZDEPMA0GA1UEBxMGTG9uZG9uMRgwFgYDVQQKEw9OYXR3
+ZXN0IE1hcmtldHMxHTAbBgNVBAsTFFBsYXRmb3JtIEVuZ2luZWVyaW5nMR4wHAYD
+VQQDExVQcm92aW5nIFZhdWx0IFJvb3QgQ0EwggIiMA0GCSqGSIb3DQEBAQUAA4IC
+DwAwggIKAoICAQDd7/WXyPIJMVmCgO/HI6jANxnAvQa3ufTgf40jQkMiI5kjAtao
+7U/d+agSyzJyYshfUeoTqCGX/VaeOHcGIxNz6FFyuwUYFeVljUmvxzXLCXRpr3eA
+Qz9G6ghMIwVHjim7HH5iCfYBMyS74op9gSap7F4JKBl2d5Iw7f0oDW6OP4C5YYD0
+SMjiT2EHjKkE2eJ4XFOs6SDSe73HvFSHCSGoDNjduzLnZoJnUzaVI9iLCI/HwEbc
+cDh/beBa56GL2DtWAOF4I1RlSJIQVk7jqiWT7HO8mfvfgkFnw0xhJUGATM4cA/RU
+zPE1fJKIz4BH3CKsLcJjolxN7cclupQvEKKmDZn2ctCPALea06B+r3w3oiDQud+j
+CeWjgHPUHM6x+9ED2z3QqMup0g40it+zrzzunR4S5F7SGRQSRBPvB+SxA5oDdEJJ
+lzwn4TmOOPgfqxkCm2THqiDVWZU+CKgaFlk1yHrwzgAk73KaJmUcciSOh5UlIIM7
+GZMfHLW6qwHl4kLTf1rveg8R8OVGs1A3r2xXwK4KZdTPD0RWzXvXz4c7dEIwjxdL
+HmQjAsu2W1wy/Bo86pHSl98YlRdjzWeWexN1xIRsZP4EQTZLxnmmRWY/tc46W+d3
+vJmbNAJbwsXk7lfgTCDmq0h1M9uKl6IyHVgy41nrnOFQBkOKCRyFTSuiAwIDAQAB
+o4H+MIH7MA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQW
+BBRKcj8ip/DO6qfDbFCdKByYluMghTAfBgNVHSMEGDAWgBRKcj8ip/DO6qfDbFCd
+KByYluMghTBQBggrBgEFBQcBAQREMEIwQAYIKwYBBQUHMAKGNGh0dHA6Ly92YXVs
+dC5wbGF0Zm9ybS5ud21pbmZyYS5uZXQvdjEvcHJvdmluZy9wa2kvY2EwRgYDVR0f
+BD8wPTA7oDmgN4Y1aHR0cDovL3ZhdWx0LnBsYXRmb3JtLm53bWluZnJhLm5ldC92
+MS9wcm92aW5nL3BraS9jcmwwDQYJKoZIhvcNAQELBQADggIBAK7u4691W4AD0Bt4
+xATYhmCySWBO3QfGHQoZpIPvT0QZwdtFeCj0ncwUnzm+IhAZ6ZrqAoUBBIRlNrLv
+MsCt9VKONYxmb0h+i4iRp9OWGSN0SqJdJXxDF0NfDvEnXHl6eg/C7OMc6VWNraje
+sam/FZeGAMxy40xn6zrwh0ofhTe+vk2nRB9DzE0fnjNOj30Qf210ERw7DxgKZG23
+Pshs67wUFGUNWPaWwxYWwgHCeplnd7XtKDHdRH0J9ghQVC5tcFHCf+yQi7XzNixW
+xs99JPFM5oNMNAux59XVA93gFssYQVslJ1QNWQkziMY0mehbFvyCqxNWlMn1Uwsa
+1N4N7m9uihm5yOz3/s7RoPN+1YSBKM3Ye5xC9FyAitNYnldTdUsXLPmaZDLngLHN
+7Z2u5k8wCcAov9KXWovD1JD1NvLxWNVoHkWsvqtrEqqyAdIDH0BuAkib7zI2oP98
+S/UB9Q8gf4lrmR8AXtK9nsUt1qX4qltZQiHxCw/EOX1iFo/tFO8OCaLyFdoZPOo2
+oA+ha2yIXxOwJIcJnRSKiMdxDuPcEoWh42dBPrRq2gAOaVZjgXowrVGDiSRGwNSY
+jSH/AXbuxrA/K5FdZqWW9Q7QGtBran+BxE85aJdBxiZrjgx0YA5rRfAi8UVmrRQq
+JKwM/JgAI3m0wIrnDR0PvqzOQIA1
+-----END CERTIFICATE-----
+---
+Server certificate
+subject=C = GB, L = London, street = England, O = Natwest Markets, OU = Platform Engineering
+
+issuer=C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
+
+---
+Acceptable client certificate CA names
+C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
+Requested Signature Algorithms: ECDSA+SHA256:RSA-PSS+SHA256:RSA+SHA256:ECDSA+SHA384:RSA-PSS+SHA384:RSA+SHA384:RSA-PSS+SHA512:RSA+SHA512:RSA+SHA1
+Shared Requested Signature Algorithms: ECDSA+SHA256:RSA-PSS+SHA256:RSA+SHA256:ECDSA+SHA384:RSA-PSS+SHA384:RSA+SHA384:RSA-PSS+SHA512:RSA+SHA512
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 3879 bytes and written 417 bytes
+Verification error: self signed certificate in certificate chain
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Server public key is 2048 bit
+Secure Renegotiation IS NOT supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 19 (self signed certificate in certificate chain)
+---
+140346430026176:error:1409445C:SSL routines:ssl3_read_bytes:tlsv13 alert certificate required:../ssl/record/rec_layer_s3.c:1528:SSL alert number 116
+command terminated with exit code 1
