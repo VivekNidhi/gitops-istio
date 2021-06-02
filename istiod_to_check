@@ -1,406 +1,209 @@
- k exec temp1   -n prv1-example  -c istio-proxy  -it -- /bin/sh
-$ openssl s_client -showcerts -connect temp2:8080
-CONNECTED(00000005)
-depth=1 C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
-verify error:num=19:self signed certificate in certificate chain
----
-Certificate chain
- 0 s:C = GB, O = Natwest Markets, OU = Platform Engineering
-   i:C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
------BEGIN CERTIFICATE-----
-MIIFuTCCA6GgAwIBAgIUQQ0S0dRAOvkdbwWyK77OSwZ4qrowDQYJKoZIhvcNAQEL
-BQAwgYkxCzAJBgNVBAYTAkdCMRAwDgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZM
-b25kb24xGDAWBgNVBAoTD05hdHdlc3QgTWFya2V0czEdMBsGA1UECxMUUGxhdGZv
-cm0gRW5naW5lZXJpbmcxHjAcBgNVBAMTFVByb3ZpbmcgVmF1bHQgUm9vdCBDQTAe
-Fw0yMTA2MDEwOTA2MzNaFw0yMTA2MDIwOTA3MDNaMEYxCzAJBgNVBAYTAkdCMRgw
-FgYDVQQKEw9OYXR3ZXN0IE1hcmtldHMxHTAbBgNVBAsTFFBsYXRmb3JtIEVuZ2lu
-ZWVyaW5nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsJSWNPE/+6Qj
-FWBbxoj5KwzRJOtei+bHkAKn+DkGaOyKF2ua7Z/7L1Ot+tnmqmQ08iNkWHnMsaPb
-hZRz4QjSgwm4muCuY7NGu7wEkzH/LooRh2shxcnVTvozeu4/szNK1WapvVTIaNR5
-ZrGr5rrKj11L8DM2p7TXQ2817uKExisSA1/eAaxbxZe8vTVciWc1xzIkGL9uSIlr
-IE/MMHiK+Uemnuj/9fWikaKRYxi8d9Yg9jDQYr5jYGnxxr7iEE7m1tnEOp0CXyb7
-wIdYHdU6Ld7TruvKpISYvZTVtRfooB3hwHlw/snQHRGf4hjEDEBNFu5/3mUvE/cU
-/0yZ/YecFwIDAQABo4IBWTCCAVUwDgYDVR0PAQH/BAQDAgIEMB0GA1UdJQQWMBQG
-CCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBQS9e9u
-3chC9gFInqK1nVHvjPYRfDAfBgNVHSMEGDAWgBRKcj8ip/DO6qfDbFCdKByYluMg
-hTBQBggrBgEFBQcBAQREMEIwQAYIKwYBBQUHMAKGNGh0dHA6Ly92YXVsdC5wbGF0
-Zm9ybS5ud21pbmZyYS5uZXQvdjEvcHJvdmluZy9wa2kvY2EwPAYDVR0RBDUwM4Yx
-c3BpZmZlOi8vY2x1c3Rlci5sb2NhbC9ucy9wcnYxLWV4YW1wbGUvc2EvZGVmYXVs
-dDBGBgNVHR8EPzA9MDugOaA3hjVodHRwOi8vdmF1bHQucGxhdGZvcm0ubndtaW5m
-cmEubmV0L3YxL3Byb3ZpbmcvcGtpL2NybDANBgkqhkiG9w0BAQsFAAOCAgEA2tDL
-AwTYytf7RbyckY9UWf0+N7RrFBjTmvwqroqa+JJNN4KqQfIwAWY/MC437T3wzxEN
-rd1g1O7QHyWrbeNDeuRCtm4eQzn03E464U3kiP8L1y32YE9K1hN0vxfu7pL4SPB/
-oJTRFlOg6ADRJ38hGF9vpvEscX0OE3eq7VgUyFZTNKPKT1bq86NaecycY9C8RClE
-DXkwr97ge1QknYiLtrBXPF7SyaMLrT8fWbCjkJ0d93bne5ZScs0+pa9O/mjgJEUR
-OUmpQu8GfUmbnrE+JYxqioG3clpWp/cF3reRZMxSXmARzNTZUSwxkG6gbB1V2hF9
-UdVrxC49O80GZtY8/y6AdrTnK2XFnYxoRnnfLwKUMBEew6W4MrTVHvPvySXFNwAD
-+UAhgczTMCwEb60WZ19Dhz5k3Vr33O7f6XmaDFLWFIcoPcMjdY0Eq5fA+T7grXa+
-nheVlq6Nj43GSXkIn600kJg3T0amMOOXj6nCHCJDkpPmDEL16UAOQV98uwABPO2q
-FaxyHNcyG25vlV+IbrI8ITnnBuFp500HvXNwjcEa4zMwE5WU4zsHZacPNdbGLdx4
-7GHjgs0vYhjReYRkbaDcXVhtdSt2aBQS+b47XubSuEpptaA4D/Z5PVepSBPUeMbI
-5rJVjX3nuNx4qEu5xDqVwMc/rv3RLGT5wAmNcGo=
------END CERTIFICATE-----
- 1 s:C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
-   i:C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
------BEGIN CERTIFICATE-----
-MIIGoTCCBImgAwIBAgIUN9a78xEP/vRr9SY5mitOH1lB2iAwDQYJKoZIhvcNAQEL
-BQAwgYkxCzAJBgNVBAYTAkdCMRAwDgYDVQQIEwdFbmdsYW5kMQ8wDQYDVQQHEwZM
-b25kb24xGDAWBgNVBAoTD05hdHdlc3QgTWFya2V0czEdMBsGA1UECxMUUGxhdGZv
-cm0gRW5naW5lZXJpbmcxHjAcBgNVBAMTFVByb3ZpbmcgVmF1bHQgUm9vdCBDQTAe
-Fw0yMTA1MTkxNTI2MzJaFw00MTA1MTQxNTI2NTdaMIGJMQswCQYDVQQGEwJHQjEQ
-MA4GA1UECBMHRW5nbGFuZDEPMA0GA1UEBxMGTG9uZG9uMRgwFgYDVQQKEw9OYXR3
-ZXN0IE1hcmtldHMxHTAbBgNVBAsTFFBsYXRmb3JtIEVuZ2luZWVyaW5nMR4wHAYD
-VQQDExVQcm92aW5nIFZhdWx0IFJvb3QgQ0EwggIiMA0GCSqGSIb3DQEBAQUAA4IC
-DwAwggIKAoICAQDd7/WXyPIJMVmCgO/HI6jANxnAvQa3ufTgf40jQkMiI5kjAtao
-7U/d+agSyzJyYshfUeoTqCGX/VaeOHcGIxNz6FFyuwUYFeVljUmvxzXLCXRpr3eA
-Qz9G6ghMIwVHjim7HH5iCfYBMyS74op9gSap7F4JKBl2d5Iw7f0oDW6OP4C5YYD0
-SMjiT2EHjKkE2eJ4XFOs6SDSe73HvFSHCSGoDNjduzLnZoJnUzaVI9iLCI/HwEbc
-cDh/beBa56GL2DtWAOF4I1RlSJIQVk7jqiWT7HO8mfvfgkFnw0xhJUGATM4cA/RU
-zPE1fJKIz4BH3CKsLcJjolxN7cclupQvEKKmDZn2ctCPALea06B+r3w3oiDQud+j
-CeWjgHPUHM6x+9ED2z3QqMup0g40it+zrzzunR4S5F7SGRQSRBPvB+SxA5oDdEJJ
-lzwn4TmOOPgfqxkCm2THqiDVWZU+CKgaFlk1yHrwzgAk73KaJmUcciSOh5UlIIM7
-GZMfHLW6qwHl4kLTf1rveg8R8OVGs1A3r2xXwK4KZdTPD0RWzXvXz4c7dEIwjxdL
-HmQjAsu2W1wy/Bo86pHSl98YlRdjzWeWexN1xIRsZP4EQTZLxnmmRWY/tc46W+d3
-vJmbNAJbwsXk7lfgTCDmq0h1M9uKl6IyHVgy41nrnOFQBkOKCRyFTSuiAwIDAQAB
-o4H+MIH7MA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQW
-BBRKcj8ip/DO6qfDbFCdKByYluMghTAfBgNVHSMEGDAWgBRKcj8ip/DO6qfDbFCd
-KByYluMghTBQBggrBgEFBQcBAQREMEIwQAYIKwYBBQUHMAKGNGh0dHA6Ly92YXVs
-dC5wbGF0Zm9ybS5ud21pbmZyYS5uZXQvdjEvcHJvdmluZy9wa2kvY2EwRgYDVR0f
-BD8wPTA7oDmgN4Y1aHR0cDovL3ZhdWx0LnBsYXRmb3JtLm53bWluZnJhLm5ldC92
-MS9wcm92aW5nL3BraS9jcmwwDQYJKoZIhvcNAQELBQADggIBAK7u4691W4AD0Bt4
-xATYhmCySWBO3QfGHQoZpIPvT0QZwdtFeCj0ncwUnzm+IhAZ6ZrqAoUBBIRlNrLv
-MsCt9VKONYxmb0h+i4iRp9OWGSN0SqJdJXxDF0NfDvEnXHl6eg/C7OMc6VWNraje
-sam/FZeGAMxy40xn6zrwh0ofhTe+vk2nRB9DzE0fnjNOj30Qf210ERw7DxgKZG23
-Pshs67wUFGUNWPaWwxYWwgHCeplnd7XtKDHdRH0J9ghQVC5tcFHCf+yQi7XzNixW
-xs99JPFM5oNMNAux59XVA93gFssYQVslJ1QNWQkziMY0mehbFvyCqxNWlMn1Uwsa
-1N4N7m9uihm5yOz3/s7RoPN+1YSBKM3Ye5xC9FyAitNYnldTdUsXLPmaZDLngLHN
-7Z2u5k8wCcAov9KXWovD1JD1NvLxWNVoHkWsvqtrEqqyAdIDH0BuAkib7zI2oP98
-S/UB9Q8gf4lrmR8AXtK9nsUt1qX4qltZQiHxCw/EOX1iFo/tFO8OCaLyFdoZPOo2
-oA+ha2yIXxOwJIcJnRSKiMdxDuPcEoWh42dBPrRq2gAOaVZjgXowrVGDiSRGwNSY
-jSH/AXbuxrA/K5FdZqWW9Q7QGtBran+BxE85aJdBxiZrjgx0YA5rRfAi8UVmrRQq
-JKwM/JgAI3m0wIrnDR0PvqzOQIA1
------END CERTIFICATE-----
----
-Server certificate
-subject=C = GB, O = Natwest Markets, OU = Platform Engineering
-
-issuer=C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
-
----
-Acceptable client certificate CA names
-C = GB, ST = England, L = London, O = Natwest Markets, OU = Platform Engineering, CN = Proving Vault Root CA
-Requested Signature Algorithms: ECDSA+SHA256:RSA-PSS+SHA256:RSA+SHA256:ECDSA+SHA384:RSA-PSS+SHA384:RSA+SHA384:RSA-PSS+SHA512:RSA+SHA512:RSA+SHA1
-Shared Requested Signature Algorithms: ECDSA+SHA256:RSA-PSS+SHA256:RSA+SHA256:ECDSA+SHA384:RSA-PSS+SHA384:RSA+SHA384:RSA-PSS+SHA512:RSA+SHA512
-Peer signing digest: SHA256
-Peer signature type: RSA-PSS
-Server Temp Key: X25519, 253 bits
----
-SSL handshake has read 3844 bytes and written 417 bytes
-Verification error: self signed certificate in certificate chain
----
-New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
-Server public key is 2048 bit
-Secure Renegotiation IS NOT supported
-Compression: NONE
-Expansion: NONE
-No ALPN negotiated
-Early data was not sent
-Verify return code: 19 (self signed certificate in certificate chain)
----
-139860988731840:error:1409445C:SSL routines:ssl3_read_bytes:tlsv13 alert certificate required:../ssl/record/rec_layer_s3.c:1528:SSL alert number 116
-
-
-
-
-
-
-2021-06-01T09:06:48.869676Z     info    JWT policy is third-party-jwt
-2021-06-01T09:06:48.869686Z     info    Pilot SAN: [istiod.istio-system.svc]
-2021-06-01T09:06:48.869690Z     info    CA Endpoint cert-manager-istio-csr.cert-manager.svc:443, provider Citadel
-2021-06-01T09:06:48.869765Z     info    Using CA cert-manager-istio-csr.cert-manager.svc:443 cert with certs: var/run/secrets/istio/root-cert.pem
-2021-06-01T09:06:48.870058Z     info    citadelclient   Citadel client using custom root cert: cert-manager-istio-csr.cert-manager.svc:443
-2021-06-01T09:06:48.914228Z     info    ads     All caches have been synced up in 51.75431ms, marking server ready
-2021-06-01T09:06:48.914770Z     info    sds     SDS server for workload certificates started, listening on "./etc/istio/proxy/SDS"
-2021-06-01T09:06:48.914808Z     info    xdsproxy        Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
-2021-06-01T09:06:48.914872Z     info    sds     Start SDS grpc server
-2021-06-01T09:06:48.915389Z     info    Opening status port 15020
-2021-06-01T09:06:48.922058Z     info    Starting proxy agent
-2021-06-01T09:06:48.922093Z     info    Epoch 0 starting
-2021-06-01T09:06:48.924949Z     info    Envoy command: [-c etc/istio/proxy/envoy-rev0.json --restart-epoch 0 --drain-time-s 45 --drain-strategy immediate --parent-shut                                                                      down-time-s 60 --service-cluster temp1.prv1-example --service-node sidecar~10.124.234.160~temp1.prv1-example~prv1-example.svc.cluster.local --local-address-ip-version                                                                       v4 --bootstrap-version 3 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ     %l      envoy %n        %v -l warning --component-log-level misc:error --concurrency 2]
-2021-06-01T09:06:49.895471Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
-2021-06-01T09:06:49.931469Z     info    ads     ADS: new connection for node:sidecar~10.124.234.160~temp1.prv1-example~prv1-example.svc.cluster.local-1
-2021-06-01T09:06:49.931455Z     info    ads     ADS: new connection for node:sidecar~10.124.234.160~temp1.prv1-example~prv1-example.svc.cluster.local-2
-2021-06-01T09:06:51.045018Z     info    cache   generated new workload certificate      latency=2.130039327s ttl=23h59m58.955002639s
-2021-06-01T09:06:51.045082Z     info    cache   Root cert has changed, start rotating root cert
-2021-06-01T09:06:51.045104Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
-2021-06-01T09:06:51.045184Z     info    cache   returned workload trust anchor from cache       ttl=23h59m58.954821347s
-2021-06-01T09:06:51.045213Z     info    cache   returned workload trust anchor from cache       ttl=23h59m58.954803954s
-2021-06-01T09:06:51.045440Z     info    cache   returned workload certificate from cache        ttl=23h59m58.954568423s
-2021-06-01T09:06:51.045813Z     info    sds     SDS: PUSH       resource=ROOTCA
-2021-06-01T09:06:51.045943Z     info    sds     SDS: PUSH       resource=default
-2021-06-01T09:06:51.045991Z     info    cache   returned workload trust anchor from cache       ttl=23h59m58.954015423s
-2021-06-01T09:06:51.046013Z     info    sds     SDS: PUSH       resource=ROOTCA
-2021-06-01T09:06:52.768540Z     info    Initialization took 3.904585169s
-2021-06-01T09:06:52.768573Z     info    Envoy proxy is ready
-[2021-06-01T09:20:59.188Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.160:8080 10.124.234.160:39454 - -
-[2021-06-01T09:22:49.274Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CER                                                                      TIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 78 - "-" "curl/7.29.0" "460285d5-fd8a-4da9-a902-14573c56                                                                      9a33" "temp2:8080" "10.124.234.161:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.184:8080 10.124.234.160:54702 - default
-[2021-06-01T09:22:57.972Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CER                                                                      TIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 70 - "-" "curl/7.29.0" "c2b90ef2-8f75-4f28-968d-97dbebbb                                                                      3a8d" "temp2:8080" "10.124.234.161:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.184:8080 10.124.234.160:54774 - default
-2021-06-01T09:35:48.416714Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
-2021-06-01T09:35:48.505840Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
-
-
- curl localhost:15000/certs
-{
- "certificates": [
-  {
-   "ca_cert": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
-     "subject_alt_names": [],
-     "days_until_expiration": "7287",
-     "valid_from": "2021-05-19T15:26:32Z",
-     "expiration_time": "2041-05-14T15:26:57Z"
-    }
-   ],
-   "cert_chain": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
-     "subject_alt_names": [
-      {
-       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
-      }
-     ],
-     "days_until_expiration": "0",
-     "valid_from": "2021-06-01T09:06:20Z",
-     "expiration_time": "2021-06-02T09:06:50Z"
-    }
-   ]
-  },
-  {
-   "ca_cert": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
-     "subject_alt_names": [],
-     "days_until_expiration": "7287",
-     "valid_from": "2021-05-19T15:26:32Z",
-     "expiration_time": "2041-05-14T15:26:57Z"
-    }
-   ],
-   "cert_chain": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
-     "subject_alt_names": [
-      {
-       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
-      }
-     ],
-     "days_until_expiration": "0",
-     "valid_from": "2021-06-01T09:06:20Z",
-     "expiration_time": "2021-06-02T09:06:50Z"
-    }
-   ]
-  },
-  {
-   "ca_cert": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
-     "subject_alt_names": [],
-     "days_until_expiration": "7287",
-     "valid_from": "2021-05-19T15:26:32Z",
-     "expiration_time": "2041-05-14T15:26:57Z"
-    }
-   ],
-   "cert_chain": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
-     "subject_alt_names": [
-      {
-       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
-      }
-     ],
-     "days_until_expiration": "0",
-     "valid_from": "2021-06-01T09:06:20Z",
-     "expiration_time": "2021-06-02T09:06:50Z"
-    }
-   ]
-  },
-  {
-   "ca_cert": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
-     "subject_alt_names": [],
-     "days_until_expiration": "7287",
-     "valid_from": "2021-05-19T15:26:32Z",
-     "expiration_time": "2041-05-14T15:26:57Z"
-    }
-   ],
-   "cert_chain": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
-     "subject_alt_names": [
-      {
-       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
-      }
-     ],
-     "days_until_expiration": "0",
-     "valid_from": "2021-06-01T09:06:20Z",
-     "expiration_time": "2021-06-02T09:06:50Z"
-    }
-   ]
-  },
-  {
-   "ca_cert": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
-     "subject_alt_names": [],
-     "days_until_expiration": "7287",
-     "valid_from": "2021-05-19T15:26:32Z",
-     "expiration_time": "2041-05-14T15:26:57Z"
-    }
-   ],
-   "cert_chain": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
-     "subject_alt_names": [
-      {
-       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
-      }
-     ],
-     "days_until_expiration": "0",
-     "valid_from": "2021-06-01T09:06:20Z",
-     "expiration_time": "2021-06-02T09:06:50Z"
-    }
-   ]
-  },
-  {
-   "ca_cert": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
-     "subject_alt_names": [],
-     "days_until_expiration": "7287",
-     "valid_from": "2021-05-19T15:26:32Z",
-     "expiration_time": "2041-05-14T15:26:57Z"
-    }
-   ],
-   "cert_chain": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
-     "subject_alt_names": [
-      {
-       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
-      }
-     ],
-     "days_until_expiration": "0",
-     "valid_from": "2021-06-01T09:06:20Z",
-     "expiration_time": "2021-06-02T09:06:50Z"
-    }
-   ]
-  },
-  {
-   "ca_cert": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
-     "subject_alt_names": [],
-     "days_until_expiration": "7287",
-     "valid_from": "2021-05-19T15:26:32Z",
-     "expiration_time": "2041-05-14T15:26:57Z"
-    }
-   ],
-   "cert_chain": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
-     "subject_alt_names": [
-      {
-       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
-      }
-     ],
-     "days_until_expiration": "0",
-     "valid_from": "2021-06-01T09:06:20Z",
-     "expiration_time": "2021-06-02T09:06:50Z"
-    }
-   ]
-  },
-  {
-   "ca_cert": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
-     "subject_alt_names": [],
-     "days_until_expiration": "7287",
-     "valid_from": "2021-05-19T15:26:32Z",
-     "expiration_time": "2041-05-14T15:26:57Z"
-    }
-   ],
-   "cert_chain": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
-     "subject_alt_names": [
-      {
-       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
-      }
-     ],
-     "days_until_expiration": "0",
-     "valid_from": "2021-06-01T09:06:20Z",
-     "expiration_time": "2021-06-02T09:06:50Z"
-    }
-   ]
-  },
-  {
-   "ca_cert": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "37d6bbf3110ffef46bf526399a2b4e1f5941da20",
-     "subject_alt_names": [],
-     "days_until_expiration": "7287",
-     "valid_from": "2021-05-19T15:26:32Z",
-     "expiration_time": "2041-05-14T15:26:57Z"
-    }
-   ],
-   "cert_chain": [
-    {
-     "path": "\u003cinline\u003e",
-     "serial_number": "0ea49f938a742ddfefb83e0a57ab10b93562b03e",
-     "subject_alt_names": [
-      {
-       "uri": "spiffe://cluster.local/ns/prv1-example/sa/default"
-      }
-     ],
-     "days_until_expiration": "0",
-     "valid_from": "2021-06-01T09:06:20Z",
-     "expiration_time": "2021-06-02T09:06:50Z"
-
-
-
-
- k get secret -n istio-system
-NAME                                       TYPE                                  DATA   AGE
-artifactory-dockerconfig                   kubernetes.io/dockerconfigjson        1      26d
-default-token-mrxjg                        kubernetes.io/service-account-token   3      26d
-istio-ca                                   kubernetes.io/tls                     3      4d3h
-istio-ca-secret                            istio.io/ca-root                      5      6d1h
-istio-cni-token-glplg                      kubernetes.io/service-account-token   3      5d1h
-istio-reader-service-account-token-vrgzd   kubernetes.io/service-account-token   3      5d1h
-istio-system-token-k5qtp                   kubernetes.io/service-account-token   3      26d
-istiod-service-account-token-hrvcq         kubernetes.io/service-account-token   3      5d1h
-istiod-tls                                 kubernetes.io/tls                     3      5d23h
-vault-issuer-token-qc5rs                   kubernetes.io/service-account-token   3      4d
-
-
-
- k exec temp1   -n prv1-example  -c temp1  -it --  curl temp2:8080
-upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"istiod","install.operator.istio.io/owning-resource":"istio-operator-vault-csr-cert-issued","install.operator.istio.io/owning-resource-namespace":"istio-system","istio":"pilot","istio.io/rev":"default","operator.istio.io/component":"Pilot","operator.istio.io/managed":"Reconcile","operator.istio.io/version":"1.10.0","release":"istio"},"name":"istiod","namespace":"istio-system"},"spec":{"selector":{"matchLabels":{"istio":"pilot"}},"strategy":{"rollingUpdate":{"maxSurge":"100%","maxUnavailable":"25%"}},"template":{"metadata":{"annotations":{"prometheus.io/port":"15014","prometheus.io/scrape":"true","sidecar.istio.io/inject":"false"},"labels":{"app":"istiod","install.operator.istio.io/owning-resource":"unknown","istio":"pilot","istio.io/rev":"default","operator.istio.io/component":"Pilot","sidecar.istio.io/inject":"false"}},"spec":{"containers":[{"args":["discovery","--monitoringAddr=:15014","--log_output_level=default:info","--domain","cluster.local","--keepaliveMaxServerConnectionAge","30m","--tlsCertFile=/etc/cert-manager/tls/tls.crt","--tlsKeyFile=/etc/cert-manager/tls/tls.key","--caCertFile=/etc/cert-manager/ca/root-cert.pem"],"env":[{"name":"ENABLE_CA_SERVER","value":"false"},{"name":"REVISION","value":"default"},{"name":"JWT_POLICY","value":"third-party-jwt"},{"name":"PILOT_CERT_PROVIDER","value":"istiod"},{"name":"POD_NAME","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.name"}}},{"name":"POD_NAMESPACE","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"}}},{"name":"SERVICE_ACCOUNT","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"spec.serviceAccountName"}}},{"name":"KUBECONFIG","value":"/var/run/secrets/remote/config"},{"name":"PILOT_TRACE_SAMPLING","value":"1"},{"name":"PILOT_ENABLE_PROTOCOL_SNIFFING_FOR_OUTBOUND","value":"true"},{"name":"PILOT_ENABLE_PROTOCOL_SNIFFING_FOR_INBOUND","value":"true"},{"name":"ISTIOD_ADDR","value":"istiod.istio-system.svc:15012"},{"name":"PILOT_ENABLE_ANALYSIS","value":"false"},{"name":"CLUSTER_ID","value":"Kubernetes"}],"image":"nwm-docker-repo.artifactory.platform.nwminfra.net/istio/pilot:1.10.0","name":"discovery","ports":[{"containerPort":8080,"protocol":"TCP"},{"containerPort":15010,"protocol":"TCP"},{"containerPort":15017,"protocol":"TCP"}],"readinessProbe":{"httpGet":{"path":"/ready","port":8080},"initialDelaySeconds":1,"periodSeconds":3,"timeoutSeconds":5},"resources":{"requests":{"cpu":"500m","memory":"2048Mi"}},"securityContext":{"capabilities":{"drop":["ALL"]},"runAsGroup":1337,"runAsNonRoot":true,"runAsUser":1337},"volumeMounts":[{"mountPath":"/var/run/secrets/tokens","name":"istio-token","readOnly":true},{"mountPath":"/var/run/secrets/istio-dns","name":"local-certs"},{"mountPath":"/etc/cacerts","name":"cacerts","readOnly":true},{"mountPath":"/var/run/secrets/remote","name":"istio-kubeconfig","readOnly":true},{"mountPath":"/etc/cert-manager/tls","name":"cert-manager","readOnly":true},{"mountPath":"/etc/cert-manager/ca","name":"ca-root-cert","readOnly":true}]}],"securityContext":{"fsGroup":1337},"serviceAccountName":"istiod-service-account","volumes":[{"emptyDir":{"medium":"Memory"},"name":"local-certs"},{"name":"istio-token","projected":{"sources":[{"serviceAccountToken":{"audience":"istio-ca","expirationSeconds":43200,"path":"istio-token"}}]}},{"name":"cacerts","secret":{"optional":true,"secretName":"cacerts"}},{"name":"istio-kubeconfig","secret":{"optional":true,"secretName":"istio-kubeconfig"}},{"name":"cert-manager","secret":{"secretName":"istiod-tls"}},{"configMap":{"defaultMode":420,"name":"istio-ca-root-cert"},"name":"ca-root-cert"}]}}}}
+  creationTimestamp: "2021-06-01T15:29:13Z"
+  generation: 1
+  labels:
+    app: istiod
+    install.operator.istio.io/owning-resource: istio-operator-vault-csr-cert-issued
+    install.operator.istio.io/owning-resource-namespace: istio-system
+    istio: pilot
+    istio.io/rev: default
+    operator.istio.io/component: Pilot
+    operator.istio.io/managed: Reconcile
+    operator.istio.io/version: 1.10.0
+    release: istio
+  name: istiod
+  namespace: istio-system
+  resourceVersion: "45478091"
+  selfLink: /apis/apps/v1/namespaces/istio-system/deployments/istiod
+  uid: 6069678f-cd68-4042-9896-11caa8a5305a
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      istio: pilot
+  strategy:
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: "15014"
+        prometheus.io/scrape: "true"
+        sidecar.istio.io/inject: "false"
+      creationTimestamp: null
+      labels:
+        app: istiod
+        install.operator.istio.io/owning-resource: unknown
+        istio: pilot
+        istio.io/rev: default
+        operator.istio.io/component: Pilot
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+      - args:
+        - discovery
+        - --monitoringAddr=:15014
+        - --log_output_level=default:info
+        - --domain
+        - cluster.local
+        - --keepaliveMaxServerConnectionAge
+        - 30m
+        - --tlsCertFile=/etc/cert-manager/tls/tls.crt
+        - --tlsKeyFile=/etc/cert-manager/tls/tls.key
+        - --caCertFile=/etc/cert-manager/ca/root-cert.pem
+        env:
+        - name: ENABLE_CA_SERVER
+          value: "false"
+        - name: REVISION
+          value: default
+        - name: JWT_POLICY
+          value: third-party-jwt
+        - name: PILOT_CERT_PROVIDER
+          value: istiod
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: SERVICE_ACCOUNT
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.serviceAccountName
+        - name: KUBECONFIG
+          value: /var/run/secrets/remote/config
+        - name: PILOT_TRACE_SAMPLING
+          value: "1"
+        - name: PILOT_ENABLE_PROTOCOL_SNIFFING_FOR_OUTBOUND
+          value: "true"
+        - name: PILOT_ENABLE_PROTOCOL_SNIFFING_FOR_INBOUND
+          value: "true"
+        - name: ISTIOD_ADDR
+          value: istiod.istio-system.svc:15012
+        - name: PILOT_ENABLE_ANALYSIS
+          value: "false"
+        - name: CLUSTER_ID
+          value: Kubernetes
+        image: nwm-docker-repo.artifactory.platform.nwminfra.net/istio/pilot:1.10.0
+        imagePullPolicy: IfNotPresent
+        name: discovery
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 15010
+          protocol: TCP
+        - containerPort: 15017
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /ready
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 1
+          periodSeconds: 3
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 500m
+            memory: 2Gi
+        securityContext:
+          capabilities:
+            drop:
+            - ALL
+          runAsGroup: 1337
+          runAsNonRoot: true
+          runAsUser: 1337
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/run/secrets/tokens
+          name: istio-token
+          readOnly: true
+        - mountPath: /var/run/secrets/istio-dns
+          name: local-certs
+        - mountPath: /etc/cacerts
+          name: cacerts
+          readOnly: true
+        - mountPath: /var/run/secrets/remote
+          name: istio-kubeconfig
+          readOnly: true
+        - mountPath: /etc/cert-manager/tls
+          name: cert-manager
+          readOnly: true
+        - mountPath: /etc/cert-manager/ca
+          name: ca-root-cert
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 1337
+      serviceAccount: istiod-service-account
+      serviceAccountName: istiod-service-account
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir:
+          medium: Memory
+        name: local-certs
+      - name: istio-token
+        projected:
+          defaultMode: 420
+          sources:
+          - serviceAccountToken:
+              audience: istio-ca
+              expirationSeconds: 43200
+              path: istio-token
+      - name: cacerts
+        secret:
+          defaultMode: 420
+          optional: true
+          secretName: cacerts
+      - name: istio-kubeconfig
+        secret:
+          defaultMode: 420
+          optional: true
+          secretName: istio-kubeconfig
+      - name: cert-manager
+        secret:
+          defaultMode: 420
+          secretName: istiod-tls
+      - configMap:
+          defaultMode: 420
+          name: istio-ca-root-cert
+        name: ca-root-cert
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2021-06-01T15:29:17Z"
+    lastUpdateTime: "2021-06-01T15:29:17Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2021-06-01T15:29:13Z"
+    lastUpdateTime: "2021-06-01T15:29:17Z"
+    message: ReplicaSet "istiod-86cd6cd6c7" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
