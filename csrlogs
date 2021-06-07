@@ -1,3 +1,5 @@
+https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/pki_secret_backend_role#key_usage
+
 key_usage           = ["DigitalSignature", "KeyEncipherment", "ClientAuth", "ServerAuth"]
 
 k describe  cr istio-2gmnc  -n istio-system
