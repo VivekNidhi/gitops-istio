@@ -1,4 +1,6 @@
- k describe  cr istio-2gmnc  -n istio-system
+key_usage           = ["DigitalSignature", "KeyEncipherment", "ClientAuth", "ServerAuth"]
+
+k describe  cr istio-2gmnc  -n istio-system
 Name:         istio-2gmnc
 Namespace:    istio-system
 Labels:       <none>
