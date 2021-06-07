@@ -1,7 +1,854 @@
-https://istio.io/latest/docs/tasks/security/authentication/mtls-migration/#set-up-the-cluster
+Logs side temp2
+
+ k logs   temp2 -c istio-proxy -n prv1-example -f
+2021-06-04T16:06:50.843141Z     info    FLAG: --concurrency="2"
+2021-06-04T16:06:50.843188Z     info    FLAG: --domain="prv1-example.svc.cluster.local"
+2021-06-04T16:06:50.843195Z     info    FLAG: --help="false"
+2021-06-04T16:06:50.843198Z     info    FLAG: --log_as_json="false"
+2021-06-04T16:06:50.843201Z     info    FLAG: --log_caller=""
+2021-06-04T16:06:50.843204Z     info    FLAG: --log_output_level="default:info"
+2021-06-04T16:06:50.843207Z     info    FLAG: --log_rotate=""
+2021-06-04T16:06:50.843210Z     info    FLAG: --log_rotate_max_age="30"
+2021-06-04T16:06:50.843213Z     info    FLAG: --log_rotate_max_backups="1000"
+2021-06-04T16:06:50.843216Z     info    FLAG: --log_rotate_max_size="104857600"
+2021-06-04T16:06:50.843219Z     info    FLAG: --log_stacktrace_level="default:none"
+2021-06-04T16:06:50.843229Z     info    FLAG: --log_target="[stdout]"
+2021-06-04T16:06:50.843244Z     info    FLAG: --meshConfig="./etc/istio/config/mesh"
+2021-06-04T16:06:50.843249Z     info    FLAG: --outlierLogPath=""
+2021-06-04T16:06:50.843253Z     info    FLAG: --proxyComponentLogLevel="misc:error"
+2021-06-04T16:06:50.843257Z     info    FLAG: --proxyLogLevel="warning"
+2021-06-04T16:06:50.843262Z     info    FLAG: --serviceCluster="temp2.prv1-example"
+2021-06-04T16:06:50.843267Z     info    FLAG: --stsPort="0"
+2021-06-04T16:06:50.843272Z     info    FLAG: --templateFile=""
+2021-06-04T16:06:50.843277Z     info    FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2021-06-04T16:06:50.843282Z     info    Version 1.10.0-d26cba7e341587453ffeb978f5cf6fbc32f346f8-Clean
+2021-06-04T16:06:50.843471Z     info    Proxy role      ips=[10.124.234.163] type=sidecar id=temp2.prv1-example domain=prv1-example.svc.cluster.local
+2021-06-04T16:06:50.843651Z     info    Apply proxy config from env {}
+
+2021-06-04T16:06:50.844745Z     info    Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+serviceCluster: temp2.prv1-example
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2021-06-04T16:06:50.844772Z     info    JWT policy is third-party-jwt
+2021-06-04T16:06:50.844798Z     info    Pilot SAN: [istiod.istio-system.svc]
+2021-06-04T16:06:50.844805Z     info    CA Endpoint cert-manager-istio-csr.cert-manager.svc:443, provider Citadel
+2021-06-04T16:06:50.844865Z     info    Using CA cert-manager-istio-csr.cert-manager.svc:443 cert with certs: var/run/secrets/istio/root-cert.pem
+2021-06-04T16:06:50.845100Z     info    citadelclient   Citadel client using custom root cert: cert-manager-istio-csr.cert-manager.svc:443
+2021-06-04T16:06:50.884018Z     info    ads     All caches have been synced up in 44.753014ms, marking server ready
+2021-06-04T16:06:50.884491Z     info    sds     SDS server for workload certificates started, listening on "./etc/istio/proxy/SDS"
+2021-06-04T16:06:50.884689Z     info    xdsproxy        Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2021-06-04T16:06:50.884542Z     info    sds     Start SDS grpc server
+2021-06-04T16:06:50.885138Z     info    Opening status port 15020
+2021-06-04T16:06:50.894612Z     info    Starting proxy agent
+2021-06-04T16:06:50.894655Z     info    Epoch 0 starting
+2021-06-04T16:06:50.896543Z     info    Envoy command: [-c etc/istio/proxy/envoy-rev0.json --restart-epoch 0 --drain-time-s 45 --drain-strategy immediate --pare                                                                             nt-shutdown-time-s 60 --service-cluster temp2.prv1-example --service-node sidecar~10.124.234.163~temp2.prv1-example~prv1-example.svc.cluster.local --local-addre                                                                             ss-ip-version v4 --bootstrap-version 3 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ       %l      envoy %n        %v -l warning --component-log-level misc                                                                             :error --concurrency 2]
+2021-06-04T16:06:51.789350Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T16:06:51.831902Z     info    ads     ADS: new connection for node:sidecar~10.124.234.163~temp2.prv1-example~prv1-example.svc.cluster.local-2
+2021-06-04T16:06:51.831960Z     info    ads     ADS: new connection for node:sidecar~10.124.234.163~temp2.prv1-example~prv1-example.svc.cluster.local-1
+2021-06-04T16:06:52.290746Z     info    cache   generated new workload certificate      latency=1.406304308s ttl=23h59m58.709272486s
+2021-06-04T16:06:52.290793Z     info    cache   Root cert has changed, start rotating root cert
+2021-06-04T16:06:52.290813Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-04T16:06:52.290884Z     info    cache   returned workload trust anchor from cache       ttl=23h59m58.709119377s
+2021-06-04T16:06:52.290908Z     info    cache   returned workload trust anchor from cache       ttl=23h59m58.709094407s
+2021-06-04T16:06:52.291337Z     info    sds     SDS: PUSH       resource=ROOTCA
+2021-06-04T16:06:52.291576Z     info    cache   returned workload trust anchor from cache       ttl=23h59m58.708430712s
+2021-06-04T16:06:52.291613Z     info    sds     SDS: PUSH       resource=ROOTCA
+2021-06-04T16:06:52.291667Z     info    cache   returned workload certificate from cache        ttl=23h59m58.70833926s
+2021-06-04T16:06:52.291777Z     info    sds     SDS: PUSH       resource=default
+2021-06-04T16:06:52.892943Z     info    Initialization took 2.052536434s
+2021-06-04T16:06:52.892975Z     info    Envoy proxy is ready
+2021-06-04T16:37:36.975339Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T16:37:37.147563Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T17:06:04.819207Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T17:06:05.067005Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T17:37:23.186193Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T17:37:23.313175Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T18:07:29.752752Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T18:07:29.867869Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T18:37:38.269492Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T18:37:38.389887Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T19:07:53.567297Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T19:07:53.893182Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T19:37:04.800735Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T19:37:05.262939Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T20:06:35.644501Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T20:06:35.688457Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T20:39:26.853103Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T20:39:27.237414Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T21:12:02.240296Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T21:12:02.674169Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T21:41:04.861440Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T21:41:05.040937Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T22:09:21.259376Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T22:09:21.520850Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T22:39:58.005218Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T22:39:58.287719Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+[2021-06-04T22:41:39.699Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:8080 10.124.128.16:53704 - -
+[2021-06-04T22:42:10.032Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 4 - "-" "-" "-" "-" "-" - - 10.124.234.163:53 10.124.128.16:43178 - -
+[2021-06-04T22:42:10.039Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:53 10.124.128.16:43180 - -
+[2021-06-04T22:42:10.044Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:53 10.124.128.16:43182 - -
+[2021-06-04T22:42:10.046Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:111 10.124.128.16:58500 - -
+[2021-06-04T22:42:10.056Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 6 - "-" "-" "-" "-" "-" - - 10.124.234.163:135 10.124.128.16:51104 - -
+[2021-06-04T22:42:10.065Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:135 10.124.128.16:51106 - -
+[2021-06-04T22:42:55.081Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:23 10.124.128.16:44878 - -
+[2021-06-04T22:42:10.047Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 45055 - "-" "-" "-" "-" "-" - - 10.124.234.163:111 10.124.128.16:58504 - -
+[2021-06-04T22:42:10.056Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 45047 - "-" "-" "-" "-" "-" - - 10.124.234.163:136 10.124.128.16:36418 - -
+[2021-06-04T22:42:55.095Z] "- - -" 0 UF,URX - - "-" 0 0 14 - "-" "-" "-" "-" "10.124.234.163:53" InboundPassthroughClusterIpv4 - 10.124.234.163:53 10.124.128.16                                                                             :43320 - -
+[2021-06-04T22:42:55.103Z] "- - -" 0 UF,URX - - "-" 0 0 14 - "-" "-" "-" "-" "10.124.234.163:53" InboundPassthroughClusterIpv4 - 10.124.234.163:53 10.124.128.16                                                                             :43322 - -
+[2021-06-04T22:42:10.068Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 45050 - "-" "-" "-" "-" "-" - - 10.124.234.163:135 10.124.128.16:51110 - -
+[2021-06-04T22:42:10.069Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 45052 - "-" "-" "-" "-" "-" - - 10.124.234.163:137 10.124.128.16:38604 - -
+[2021-06-04T22:42:55.231Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 2 - "-" "-" "-" "-" "-" - - 10.124.234.163:53 10.124.128.16:43334 - -
+[2021-06-04T22:42:55.236Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:53 10.124.128.16:43336 - -
+[2021-06-04T22:42:55.240Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:53 10.124.128.16:43338 - -
+[2021-06-04T22:42:55.203Z] "- - -" 0 - - - "-" 0 0 39 - "-" "-" "-" "-" "-" InboundPassthroughClusterIpv4 - 10.124.234.163:53 10.124.128.16:43332 - -
+[2021-06-04T22:42:55.244Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:53 10.124.128.16:43340 - -
+[2021-06-04T22:42:55.246Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:53 10.124.128.16:43342 - -
+[2021-06-04T22:42:55.247Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:53 10.124.128.16:43344 - -
+[2021-06-04T22:42:55.252Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:53 10.124.128.16:43346 - -
+[2021-06-04T22:43:03.095Z] "- - -" 0 UF,URX - - "-" 0 0 0 - "-" "-" "-" "-" "10.124.234.163:23" InboundPassthroughClusterIpv4 - 10.124.234.163:23 10.124.128.16:                                                                             44926 - -
+[2021-06-04T22:43:03.097Z] "- - -" 0 UF,URX - - "-" 0 0 4 - "-" "-" "-" "-" "10.124.234.163:23" InboundPassthroughClusterIpv4 - 10.124.234.163:23 10.124.128.16:                                                                             44928 - -
+[2021-06-04T22:43:03.116Z] "- - -" 0 UF,URX - - "-" 0 0 0 - "-" "-" "-" "-" "10.124.234.163:111" InboundPassthroughClusterIpv4 - 10.124.234.163:111 10.124.128.1                                                                             6:58684 - -
+[2021-06-04T22:43:03.116Z] "- - -" 0 UF,URX - - "-" 0 0 0 - "-" "-" "-" "-" "10.124.234.163:136" InboundPassthroughClusterIpv4 - 10.124.234.163:136 10.124.128.1                                                                             6:36598 - -
+[2021-06-04T22:43:03.119Z] "- - -" 0 UF,URX - - "-" 0 0 4 - "-" "-" "-" "-" "10.124.234.163:111" InboundPassthroughClusterIpv4 - 10.124.234.163:111 10.124.128.1                                                                             6:58688 - -
+[2021-06-04T22:43:03.119Z] "- - -" 0 UF,URX - - "-" 0 0 3 - "-" "-" "-" "-" "10.124.234.163:136" InboundPassthroughClusterIpv4 - 10.124.234.163:136 10.124.128.1                                                                             6:36602 - -
+[2021-06-04T22:43:03.130Z] "- - -" 0 UF,URX - - "-" 0 0 0 - "-" "-" "-" "-" "10.124.234.163:135" InboundPassthroughClusterIpv4 - 10.124.234.163:135 10.124.128.1                                                                             6:51290 - -
+[2021-06-04T22:43:03.133Z] "- - -" 0 UF,URX - - "-" 0 0 0 - "-" "-" "-" "-" "10.124.234.163:137" InboundPassthroughClusterIpv4 - 10.124.234.163:137 10.124.128.1                                                                             6:38788 - -
+[2021-06-04T22:43:03.133Z] "- - -" 0 UF,URX - - "-" 0 0 1 - "-" "-" "-" "-" "10.124.234.163:135" InboundPassthroughClusterIpv4 - 10.124.234.163:135 10.124.128.1                                                                             6:51294 - -
+[2021-06-04T22:43:03.135Z] "- - -" 0 UF,URX - - "-" 0 0 1 - "-" "-" "-" "-" "10.124.234.163:137" InboundPassthroughClusterIpv4 - 10.124.234.163:137 10.124.128.1                                                                             6:38790 - -
+[2021-06-04T22:43:03.127Z] "- - -" 0 - - - "-" 0 0 28 - "-" "-" "-" "-" "-" InboundPassthroughClusterIpv4 - 10.124.234.163:136 10.124.128.16:36604 - -
+[2021-06-04T22:43:03.159Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 2 - "-" "-" "-" "-" "-" - - 10.124.234.163:136 10.124.128.16:36616 - -
+[2021-06-04T22:43:03.131Z] "- - -" 0 - - - "-" 0 0 31 - "-" "-" "-" "-" "-" InboundPassthroughClusterIpv4 - 10.124.234.163:111 10.124.128.16:58696 - -
+[2021-06-04T22:43:03.165Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:111 10.124.128.16:58710 - -
+[2021-06-04T22:43:03.165Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:136 10.124.128.16:36620 - -
+[2021-06-04T22:43:03.165Z] "- - -" 0 - - - "-" 0 0 2 - "-" "-" "-" "-" "-" InboundPassthroughClusterIpv4 - 10.124.234.163:137 10.124.128.16:38800 - -
+[2021-06-04T22:43:03.170Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:136 10.124.128.16:36626 - -
+[2021-06-04T22:43:03.170Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:111 10.124.128.16:1024 - -
+[2021-06-04T22:43:03.172Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 3 - "-" "-" "-" "-" "-" - - 10.124.234.163:137 10.124.128.16:38806 - -
+[2021-06-04T22:43:03.175Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:136 10.124.128.16:36632 - -
+[2021-06-04T22:43:03.175Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:111 10.124.128.16:58722 - -
+[2021-06-04T22:43:03.161Z] "- - -" 0 - - - "-" 0 0 14 - "-" "-" "-" "-" "-" InboundPassthroughClusterIpv4 - 10.124.234.163:135 10.124.128.16:51302 - -
+[2021-06-04T22:43:03.178Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 5 - "-" "-" "-" "-" "-" - - 10.124.234.163:137 10.124.128.16:38816 - -
+[2021-06-04T22:43:03.177Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 8 - "-" "-" "-" "-" "-" - - 10.124.234.163:111 10.124.128.16:58726 - -
+[2021-06-04T22:43:03.178Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 8 - "-" "-" "-" "-" "-" - - 10.124.234.163:136 10.124.128.16:36642 - -
+[2021-06-04T22:43:03.184Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 2 - "-" "-" "-" "-" "-" - - 10.124.234.163:135 10.124.128.16:51328 - -
+[2021-06-04T22:43:03.189Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:136 10.124.128.16:36650 - -
+[2021-06-04T22:43:03.189Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:135 10.124.128.16:51332 - -
+[2021-06-04T22:43:03.187Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 3 - "-" "-" "-" "-" "-" - - 10.124.234.163:137 10.124.128.16:38822 - -
+[2021-06-04T22:43:03.189Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:111 10.124.128.16:58740 - -
+[2021-06-04T22:43:03.192Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:136 10.124.128.16:36654 - -
+[2021-06-04T22:43:03.193Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:137 10.124.128.16:38834 - -
+[2021-06-04T22:43:03.193Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:135 10.124.128.16:51340 - -
+[2021-06-04T22:43:03.193Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:111 10.124.128.16:58748 - -
+[2021-06-04T22:43:03.199Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:445 10.124.128.16:44470 - -
+[2021-06-04T22:43:03.199Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:111 10.124.128.16:58752 - -
+[2021-06-04T22:43:03.199Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:135 10.124.128.16:51350 - -
+[2021-06-04T22:43:03.199Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:137 10.124.128.16:38844 - -
+[2021-06-04T22:43:03.176Z] "- - -" 0 - - - "-" 0 0 23 - "-" "-" "-" "-" "-" InboundPassthroughClusterIpv4 - 10.124.234.163:23 10.124.128.16:44970 - -
+[2021-06-04T22:43:03.200Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:445 10.124.128.16:44478 - -
+[2021-06-04T22:43:03.201Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:137 10.124.128.16:38850 - -
+[2021-06-04T22:43:03.201Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:135 10.124.128.16:51356 - -
+[2021-06-04T22:43:03.201Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:23 10.124.128.16:45010 - -
+[2021-06-04T22:43:03.202Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:137 10.124.128.16:38856 - -
+[2021-06-04T22:43:03.202Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:135 10.124.128.16:51366 - -
+[2021-06-04T22:43:03.202Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:23 10.124.128.16:45018 - -
+[2021-06-04T22:43:03.206Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:135 10.124.128.16:51370 - -
+[2021-06-04T22:43:03.206Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 3 - "-" "-" "-" "-" "-" - - 10.124.234.163:23 10.124.128.16:45022 - -
+[2021-06-04T22:43:03.212Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 2 - "-" "-" "-" "-" "-" - - 10.124.234.163:23 10.124.128.16:45024 - -
+[2021-06-04T22:43:03.217Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:23 10.124.128.16:45026 - -
+[2021-06-04T22:43:03.218Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:23 10.124.128.16:45028 - -
+[2021-06-04T22:43:03.221Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:23 10.124.128.16:45030 - -
+[2021-06-04T22:42:55.495Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 45048 - "-" "-" "-" "-" "-" - - 10.124.234.163:138 10.124.128.16:39690 - -
+[2021-06-04T22:43:48.251Z] "- - -" 0 UF,URX - - "-" 0 0 1 - "-" "-" "-" "-" "10.124.234.163:445" InboundPassthroughClusterIpv4 - 10.124.234.163:445 10.124.128.1                                                                             6:44550 - -
+[2021-06-04T22:43:48.254Z] "- - -" 0 UF,URX - - "-" 0 0 1 - "-" "-" "-" "-" "10.124.234.163:445" InboundPassthroughClusterIpv4 - 10.124.234.163:445 10.124.128.1                                                                             6:44552 - -
+[2021-06-04T22:43:48.259Z] "- - -" 0 - - - "-" 0 0 5 - "-" "-" "-" "-" "-" InboundPassthroughClusterIpv4 - 10.124.234.163:445 10.124.128.16:44554 - -
+[2021-06-04T22:43:48.265Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:445 10.124.128.16:44556 - -
+[2021-06-04T22:43:48.267Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:445 10.124.128.16:44558 - -
+[2021-06-04T22:43:48.270Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:445 10.124.128.16:44560 - -
+[2021-06-04T22:43:48.271Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:445 10.124.128.16:44562 - -
+[2021-06-04T22:43:48.274Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:445 10.124.128.16:44564 - -
+[2021-06-04T22:43:48.275Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:445 10.124.128.16:44566 - -
+[2021-06-04T22:43:48.277Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:445 10.124.128.16:44568 - -
+[2021-06-04T22:43:48.556Z] "- - -" 0 UF,URX - - "-" 0 0 0 - "-" "-" "-" "-" "10.124.234.163:138" InboundPassthroughClusterIpv4 - 10.124.234.163:138 10.124.128.1                                                                             6:39876 - -
+[2021-06-04T22:43:48.558Z] "- - -" 0 UF,URX - - "-" 0 0 1 - "-" "-" "-" "-" "10.124.234.163:138" InboundPassthroughClusterIpv4 - 10.124.234.163:138 10.124.128.1                                                                             6:39878 - -
+[2021-06-04T22:43:48.567Z] "- - -" 0 - - - "-" 0 0 5 - "-" "-" "-" "-" "-" InboundPassthroughClusterIpv4 - 10.124.234.163:138 10.124.128.16:39880 - -
+[2021-06-04T22:43:48.575Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:138 10.124.128.16:39882 - -
+[2021-06-04T22:43:48.577Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:138 10.124.128.16:39884 - -
+[2021-06-04T22:43:48.579Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:138 10.124.128.16:39886 - -
+[2021-06-04T22:43:48.581Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:138 10.124.128.16:39888 - -
+[2021-06-04T22:43:48.587Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:138 10.124.128.16:39890 - -
+[2021-06-04T22:43:48.590Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:138 10.124.128.16:39892 - -
+[2021-06-04T22:43:48.592Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:138 10.124.128.16:39894 - -
+[2021-06-04T22:45:10.215Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:21 10.124.128.16:59228 - -
+[2021-06-04T22:45:10.219Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:25 10.124.128.16:43530 - -
+[2021-06-04T22:45:18.227Z] "- - -" 0 UF,URX - - "-" 0 0 0 - "-" "-" "-" "-" "10.124.234.163:21" InboundPassthroughClusterIpv4 - 10.124.234.163:21 10.124.128.16:                                                                             59252 - -
+[2021-06-04T22:45:18.229Z] "- - -" 0 UF,URX - - "-" 0 0 0 - "-" "-" "-" "-" "10.124.234.163:25" InboundPassthroughClusterIpv4 - 10.124.234.163:25 10.124.128.16:                                                                             43552 - -
+[2021-06-04T22:45:18.231Z] "- - -" 0 UF,URX - - "-" 0 0 2 - "-" "-" "-" "-" "10.124.234.163:25" InboundPassthroughClusterIpv4 - 10.124.234.163:25 10.124.128.16:                                                                             43556 - -
+[2021-06-04T22:45:18.230Z] "- - -" 0 UF,URX - - "-" 0 0 5 - "-" "-" "-" "-" "10.124.234.163:21" InboundPassthroughClusterIpv4 - 10.124.234.163:21 10.124.128.16:                                                                             59256 - -
+[2021-06-04T22:45:18.237Z] "- - -" 0 - - - "-" 0 0 31 - "-" "-" "-" "-" "-" InboundPassthroughClusterIpv4 - 10.124.234.163:25 10.124.128.16:43558 - -
+[2021-06-04T22:45:18.272Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:25 10.124.128.16:43562 - -
+[2021-06-04T22:45:18.273Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:25 10.124.128.16:43564 - -
+[2021-06-04T22:45:18.273Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:25 10.124.128.16:43566 - -
+[2021-06-04T22:45:18.274Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:25 10.124.128.16:43568 - -
+[2021-06-04T22:45:18.276Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:25 10.124.128.16:43570 - -
+[2021-06-04T22:45:18.271Z] "- - -" 0 - - - "-" 0 0 5 - "-" "-" "-" "-" "-" InboundPassthroughClusterIpv4 - 10.124.234.163:21 10.124.128.16:59262 - -
+[2021-06-04T22:45:18.279Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:25 10.124.128.16:43572 - -
+[2021-06-04T22:45:18.279Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:21 10.124.128.16:59276 - -
+[2021-06-04T22:45:18.279Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:25 10.124.128.16:43576 - -
+[2021-06-04T22:45:18.279Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:21 10.124.128.16:59280 - -
+[2021-06-04T22:45:18.284Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:21 10.124.128.16:59282 - -
+[2021-06-04T22:45:18.288Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:21 10.124.128.16:59284 - -
+[2021-06-04T22:45:18.292Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 1 - "-" "-" "-" "-" "-" - - 10.124.234.163:21 10.124.128.16:59286 - -
+[2021-06-04T22:45:18.295Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:21 10.124.128.16:59288 - -
+[2021-06-04T22:45:18.296Z] "- - -" 0 NR filter_chain_not_found - "-" 0 0 0 - "-" "-" "-" "-" "-" - - 10.124.234.163:21 10.124.128.16:59290 - -
+2021-06-04T23:07:58.774429Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T23:07:58.873301Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T23:37:38.923312Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T23:37:39.350869Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T00:06:34.617448Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T00:06:34.874638Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T00:36:53.480323Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T00:36:53.702926Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T01:05:40.672120Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T01:05:41.107052Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T01:35:35.088625Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T01:35:35.239320Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T02:02:55.900578Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T02:02:56.367480Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T02:35:12.931913Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T02:35:13.238381Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T03:07:46.664986Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T03:07:47.154850Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T03:40:18.276773Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T03:40:18.397681Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T04:06:51.645839Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-05T04:06:52.450605Z     info    cache   generated new workload certificate      latency=804.097659ms ttl=23h59m59.54941386s
+2021-06-05T04:06:52.450863Z     info    sds     SDS: PUSH       resource=default
+2021-06-05T04:09:30.143673Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T04:09:30.612869Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T04:42:36.413349Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T04:42:36.621549Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T05:14:51.371280Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T05:14:51.801512Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T05:45:17.084323Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T05:45:17.315145Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T06:15:17.434177Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T06:15:17.453411Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T06:44:59.902060Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T06:45:00.361669Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T07:17:39.903164Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T07:17:40.075805Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T07:45:59.788702Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T07:45:59.946891Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T08:13:22.938556Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T08:13:22.975969Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T08:44:56.833174Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T08:44:56.954639Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T09:15:55.916488Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T09:15:56.082576Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T09:48:28.563503Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T09:48:28.634702Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T10:16:19.302288Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T10:16:19.368996Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T10:46:59.332254Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T10:46:59.418733Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T11:16:50.037027Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T11:16:50.113594Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T11:44:51.081303Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T11:44:51.577019Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T12:15:14.632486Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T12:15:14.967251Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T12:45:08.661942Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T12:45:09.147009Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T13:14:46.355558Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T13:14:46.785253Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T13:43:42.796201Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T13:43:43.139797Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T14:13:53.641880Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T14:13:53.944204Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T14:44:50.951374Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T14:44:50.997543Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T15:15:35.580775Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T15:15:35.715796Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T15:46:21.719666Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T15:46:22.059998Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T16:06:52.226200Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-05T16:06:53.040330Z     info    cache   generated new workload certificate      latency=813.772663ms ttl=23h59m58.959685155s
+2021-06-05T16:06:53.040680Z     info    sds     SDS: PUSH       resource=default
+2021-06-05T16:18:10.549428Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T16:18:10.748922Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T16:46:07.493352Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T16:46:07.669803Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T17:18:51.934001Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T17:18:52.219074Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T17:47:22.707522Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T17:47:22.997780Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T18:15:15.577658Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T18:15:15.898235Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T18:47:31.217853Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T18:47:31.610266Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T19:19:02.853369Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T19:19:03.250232Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T19:46:34.260566Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T19:46:34.419264Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T20:19:27.542583Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T20:19:27.788491Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T20:46:51.255913Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T20:46:51.404825Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T21:16:21.311112Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T21:16:21.487215Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T21:46:48.877561Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T21:46:49.292590Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T22:16:09.320106Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T22:16:09.620949Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T22:46:27.523243Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T22:46:27.687637Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T23:14:21.924679Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T23:14:22.016545Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T23:43:14.329147Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T23:43:14.795628Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T00:12:46.082311Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T00:12:46.407763Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T00:45:17.091534Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T00:45:17.339118Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T01:15:30.300204Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T01:15:30.619656Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T01:48:23.809275Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T01:48:24.006748Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T02:19:35.718913Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T02:19:36.199696Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T02:48:33.488458Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T02:48:33.544368Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T03:15:57.189358Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T03:15:57.466436Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T03:44:32.213177Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T03:44:32.397184Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T04:06:52.521762Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-06T04:06:53.252420Z     info    cache   generated new workload certificate      latency=730.096209ms ttl=23h59m58.747621843s
+2021-06-06T04:06:53.252694Z     info    sds     SDS: PUSH       resource=default
+2021-06-06T04:13:42.922488Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T04:13:43.211058Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T04:42:45.481674Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T04:42:45.845753Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T05:10:04.613744Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T05:10:04.973735Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T05:40:27.736341Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T05:40:27.919953Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T06:13:34.108599Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T06:13:34.295351Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T06:43:59.222197Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T06:43:59.513096Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T07:15:18.970648Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T07:15:19.351969Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T07:46:13.944266Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T07:46:13.961054Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T08:14:40.481358Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T08:14:40.978058Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T08:42:42.864626Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T08:42:42.967738Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T09:13:58.185316Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T09:13:58.255171Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T09:45:07.566236Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T09:45:08.048868Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T10:12:53.662622Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T10:12:53.906378Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T10:41:37.382028Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T10:41:37.758796Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T11:11:55.707112Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T11:11:55.751042Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T11:44:32.926648Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T11:44:33.207047Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T12:12:51.994875Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T12:12:52.087942Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T12:40:15.936090Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T12:40:16.370734Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T13:07:28.512358Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T13:07:28.862433Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T13:35:44.984034Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T13:35:45.164270Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T14:06:07.727467Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T14:06:08.223920Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T14:33:51.106671Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T14:33:51.360233Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T15:04:25.804568Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T15:04:26.153221Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T15:33:20.059080Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T15:33:20.259882Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T16:03:04.539753Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T16:03:04.855152Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T16:06:52.627335Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-06T16:06:53.350389Z     info    cache   generated new workload certificate      latency=722.695235ms ttl=23h59m59.649633861s
+2021-06-06T16:06:53.350624Z     info    sds     SDS: PUSH       resource=default
+2021-06-06T16:34:01.924127Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T16:34:01.960901Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T17:03:28.883138Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T17:03:29.027448Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T17:34:20.616758Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T17:34:20.821364Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T18:03:21.494286Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T18:03:21.653561Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T18:33:05.764359Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T18:33:06.259172Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T19:04:44.915495Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T19:04:45.135314Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T19:32:30.246425Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T19:32:30.646690Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T20:00:06.334361Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T20:00:06.507724Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T20:28:56.456302Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T20:28:56.859727Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T20:59:22.650532Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T20:59:22.981371Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T21:28:27.284312Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T21:28:27.611298Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T22:00:19.585956Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T22:00:19.669826Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T22:29:00.801827Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T22:29:00.814912Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T23:00:37.436173Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T23:00:37.916001Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T23:29:40.877069Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T23:29:41.105734Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T00:01:13.418071Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T00:01:13.863634Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T00:31:37.670255Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T00:31:37.692817Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T01:03:38.170465Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T01:03:38.186199Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T01:34:42.734920Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T01:34:43.054974Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T02:06:55.138652Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T02:06:55.435551Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T02:37:51.155230Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T02:37:51.431801Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T03:06:01.794844Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T03:06:01.955055Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T03:39:09.132885Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T03:39:09.195827Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T04:06:53.175687Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-07T04:06:55.173595Z     info    cache   generated new workload certificate      latency=1.997389128s ttl=23h59m58.826425705s
+2021-06-07T04:06:55.173798Z     info    sds     SDS: PUSH       resource=default
+2021-06-07T04:06:59.117751Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T04:06:59.206767Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T04:35:55.595301Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T04:35:55.776015Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T05:07:57.302537Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T05:07:57.315124Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T05:39:04.760883Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T05:39:05.043020Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T06:06:27.870123Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T06:06:28.096385Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+[2021-06-07T06:37:05.892Z] "- - -" 0 - - - "-" 0 0 16 - "-" "-" "-" "-" "10.124.234.163:8080" inbound|8080|| 127.0.0.6:36469 10.124.234.163:8080 10.124.234.209:                                                                             58056 temp2 -
+2021-06-07T06:38:19.051745Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T06:38:19.417058Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+[2021-06-07T06:40:07.099Z] "- - -" 0 - - - "-" 0 0 4 - "-" "-" "-" "-" "10.124.234.163:8080" inbound|8080|| 127.0.0.6:35729 10.124.234.163:8080 10.124.234.209:5                                                                             9474 temp2 -
+[2021-06-07T06:40:27.439Z] "- - -" 0 - - - "-" 0 0 3 - "-" "-" "-" "-" "10.124.234.163:8080" inbound|8080|| 127.0.0.6:60221 10.124.234.163:8080 10.124.234.209:5                                                                             9638 temp2 -
+2021-06-07T07:06:35.635763Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T07:06:35.678342Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+[2021-06-07T07:07:33.771Z] "- - -" 0 - - - "-" 0 0 4 - "-" "-" "-" "-" "10.124.234.163:8080" inbound|8080|| 127.0.0.6:60269 10.124.234.163:8080 10.124.234.209:4                                                                             4192 temp2 -
+[2021-06-07T07:35:46.168Z] "- - -" 0 - - - "-" 0 0 4 - "-" "-" "-" "-" "10.124.234.163:8080" inbound|8080|| 127.0.0.6:38585 10.124.234.163:8080 10.124.234.209:5                                                                             7414 temp2 -
+2021-06-07T07:36:27.850751Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T07:36:28.053052Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+[2021-06-07T07:54:34.614Z] "- - -" 0 - - - "-" 0 0 3 - "-" "-" "-" "-" "10.124.234.163:8080" inbound|8080|| 127.0.0.6:34167 10.124.234.163:8080 10.124.234.209:3                                                                             8062 temp2 -
+[2021-06-07T07:57:31.300Z] "- - -" 0 - - - "-" 0 0 2 - "-" "-" "-" "-" "10.124.234.163:8080" inbound|8080|| 127.0.0.6:35773 10.124.234.163:8080 10.124.234.209:3                                                                             9482 temp2 -
+[2021-06-07T08:02:16.827Z] "- - -" 0 - - - "-" 0 0 3 - "-" "-" "-" "-" "10.124.234.163:8080" inbound|8080|| 127.0.0.6:49921 10.124.234.163:8080 10.124.234.209:4                                                                             1718 temp2 -
+2021-06-07T08:05:30.110813Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T08:05:30.420666Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T08:33:50.946357Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T08:33:51.317376Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T09:03:08.212876Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T09:03:08.476715Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T09:16:12.615982Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T09:16:12.652042Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, connection error: desc = "transport: Error whil                                                                             e dialing dial tcp 10.124.235.245:15012: connect: connection refused"
+2021-06-07T09:16:33.232169Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, connection error: desc = "transport: Error whil                                                                             e dialing dial tcp 10.124.235.245:15012: i/o timeout"
+2021-06-07T09:16:33.959586Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+[2021-06-07T09:37:43.951Z] "- - -" 0 - - - "-" 0 0 3 - "-" "-" "-" "-" "10.124.234.163:8080" inbound|8080|| 127.0.0.6:46933 10.124.234.163:8080 10.124.234.209:5                                                                             9272 temp2 -
+2021-06-07T09:49:12.916923Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T09:49:13.217869Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T10:16:29.007563Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T10:16:29.497727Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T10:48:59.055048Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T10:48:59.101892Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
 
 
 
- k exec temp1   -n prv1-example  -c temp1  -it --  curl temp2:8080
-k exec temp1   -n prv1-example  -c temp1  -it --  curl temp2:8080
-upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED
+Logs temp1:
+
+
+
+  k logs   temp1 -c istio-proxy -n prv1-example -f
+2021-06-04T16:06:35.111763Z     info    FLAG: --concurrency="2"
+2021-06-04T16:06:35.111795Z     info    FLAG: --domain="prv1-example.svc.cluster.local"
+2021-06-04T16:06:35.111803Z     info    FLAG: --help="false"
+2021-06-04T16:06:35.111808Z     info    FLAG: --log_as_json="false"
+2021-06-04T16:06:35.111813Z     info    FLAG: --log_caller=""
+2021-06-04T16:06:35.111817Z     info    FLAG: --log_output_level="default:info"
+2021-06-04T16:06:35.111821Z     info    FLAG: --log_rotate=""
+2021-06-04T16:06:35.111825Z     info    FLAG: --log_rotate_max_age="30"
+2021-06-04T16:06:35.111830Z     info    FLAG: --log_rotate_max_backups="1000"
+2021-06-04T16:06:35.111841Z     info    FLAG: --log_rotate_max_size="104857600"
+2021-06-04T16:06:35.111845Z     info    FLAG: --log_stacktrace_level="default:none"
+2021-06-04T16:06:35.111856Z     info    FLAG: --log_target="[stdout]"
+2021-06-04T16:06:35.111875Z     info    FLAG: --meshConfig="./etc/istio/config/mesh"
+2021-06-04T16:06:35.111879Z     info    FLAG: --outlierLogPath=""
+2021-06-04T16:06:35.111883Z     info    FLAG: --proxyComponentLogLevel="misc:error"
+2021-06-04T16:06:35.111888Z     info    FLAG: --proxyLogLevel="warning"
+2021-06-04T16:06:35.111892Z     info    FLAG: --serviceCluster="temp1.prv1-example"
+2021-06-04T16:06:35.111897Z     info    FLAG: --stsPort="0"
+2021-06-04T16:06:35.111901Z     info    FLAG: --templateFile=""
+2021-06-04T16:06:35.111905Z     info    FLAG: --tokenManagerPlugin="GoogleTokenExchange"
+2021-06-04T16:06:35.111911Z     info    Version 1.10.0-d26cba7e341587453ffeb978f5cf6fbc32f346f8-Clean
+2021-06-04T16:06:35.112107Z     info    Proxy role      ips=[10.124.234.209] type=sidecar id=temp1.prv1-example domain=prv1-example.svc.cluster.local
+2021-06-04T16:06:35.112218Z     info    Apply proxy config from env {}
+
+2021-06-04T16:06:35.113434Z     info    Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod.istio-system.svc:15012
+drainDuration: 45s
+parentShutdownDuration: 60s
+proxyAdminPort: 15000
+serviceCluster: temp1.prv1-example
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  zipkin:
+    address: zipkin.istio-system:9411
+
+2021-06-04T16:06:35.113463Z     info    JWT policy is third-party-jwt
+2021-06-04T16:06:35.113475Z     info    Pilot SAN: [istiod.istio-system.svc]
+2021-06-04T16:06:35.113481Z     info    CA Endpoint cert-manager-istio-csr.cert-manager.svc:443, provider Citadel
+2021-06-04T16:06:35.113543Z     info    Using CA cert-manager-istio-csr.cert-manager.svc:443 cert with certs: var/run/secrets/istio/root-cert.pem
+2021-06-04T16:06:35.113785Z     info    citadelclient   Citadel client using custom root cert: cert-manager-istio-csr.cert-manager.svc:443
+2021-06-04T16:06:35.151968Z     info    ads     All caches have been synced up in 45.705574ms, marking server ready
+2021-06-04T16:06:35.152504Z     info    sds     SDS server for workload certificates started, listening on "./etc/istio/proxy/SDS"
+2021-06-04T16:06:35.152550Z     info    xdsproxy        Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2021-06-04T16:06:35.152571Z     info    sds     Start SDS grpc server
+2021-06-04T16:06:35.153118Z     info    Opening status port 15020
+2021-06-04T16:06:35.158836Z     info    Starting proxy agent
+2021-06-04T16:06:35.158874Z     info    Epoch 0 starting
+2021-06-04T16:06:35.161635Z     info    Envoy command: [-c etc/istio/proxy/envoy-rev0.json --restart-epoch 0 --drain-time-s 45 --drain-strategy immediate --parent-shutdown-time-s 60 --service-cluster temp1.prv1-example --service-node sidecar~10.124.234.209~temp1.prv1-example~prv1-example.svc.cluster.local --local-address-ip-version v4 --bootstrap-version 3 --disable-hot-restart --log-format %Y-%m-%dT%T.%fZ    %l      envoy %n        %v -l warning --component-log-level misc:error --concurrency 2]
+2021-06-04T16:06:36.060482Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T16:06:36.095752Z     info    ads     ADS: new connection for node:sidecar~10.124.234.209~temp1.prv1-example~prv1-example.svc.cluster.local-2
+2021-06-04T16:06:36.095761Z     info    ads     ADS: new connection for node:sidecar~10.124.234.209~temp1.prv1-example~prv1-example.svc.cluster.local-1
+2021-06-04T16:06:36.627687Z     info    cache   generated new workload certificate      latency=1.47509217s ttl=23h59m59.372344555s
+2021-06-04T16:06:36.627745Z     info    cache   Root cert has changed, start rotating root cert
+2021-06-04T16:06:36.627763Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-04T16:06:36.627831Z     info    cache   returned workload trust anchor from cache       ttl=23h59m59.37217258s
+2021-06-04T16:06:36.627857Z     info    cache   returned workload certificate from cache        ttl=23h59m59.372145956s
+2021-06-04T16:06:36.628215Z     info    sds     SDS: PUSH       resource=default
+2021-06-04T16:06:36.628332Z     info    cache   returned workload trust anchor from cache       ttl=23h59m59.371672385s
+2021-06-04T16:06:36.628444Z     info    sds     SDS: PUSH       resource=ROOTCA
+2021-06-04T16:06:36.628623Z     info    cache   returned workload trust anchor from cache       ttl=23h59m59.371380894s
+2021-06-04T16:06:36.628767Z     info    sds     SDS: PUSH       resource=ROOTCA
+2021-06-04T16:06:38.397489Z     info    Initialization took 3.289797736s
+2021-06-04T16:06:38.397525Z     info    Envoy proxy is ready
+[2021-06-04T16:06:56.993Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 56 - "-" "curl/7.29.0" "2fbd39a0-042e-419b-9b68-79f409046246" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:41100 - default
+[2021-06-04T16:06:58.760Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 24 - "-" "curl/7.29.0" "694eb905-f036-4a43-b269-8841b361b8ba" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:41126 - default
+[2021-06-04T16:07:00.630Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 46 - "-" "curl/7.29.0" "cd77dbad-89da-4606-9936-7900dc678f03" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:41158 - default
+[2021-06-04T16:07:02.114Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 41 - "-" "curl/7.29.0" "5e450d5d-cd6f-4862-806f-29f04b37d9b8" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:41180 - default
+[2021-06-04T16:07:07.070Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 45 - "-" "curl/7.29.0" "65c6d673-eb69-41ec-855b-8eaddc609d73" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:41236 - default
+[2021-06-04T16:07:09.646Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 37 - "-" "curl/7.29.0" "d5b801f8-99f0-4601-8e2f-8c3c92518b96" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:41266 - default
+[2021-06-04T16:07:10.982Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 28 - "-" "curl/7.29.0" "7624361d-4694-40da-8a89-18d6a252db55" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:41288 - default
+[2021-06-04T16:07:13.254Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 27 - "-" "curl/7.29.0" "2f8729aa-5f24-4a0c-8468-7a27976eae55" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:41328 - default
+2021-06-04T16:37:20.787866Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T16:37:20.971942Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T17:07:10.929549Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T17:07:11.111824Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T17:39:51.455143Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T17:39:51.770337Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T18:09:47.433876Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T18:09:47.753037Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T18:39:36.085431Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T18:39:36.306839Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T19:09:16.395884Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T19:09:16.825351Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T19:42:17.431440Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T19:42:17.470941Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T20:12:18.731091Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T20:12:19.238402Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T20:41:14.323723Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T20:41:14.764737Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T21:08:52.712115Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T21:08:53.168171Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T21:38:09.574089Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T21:38:09.963501Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T22:10:12.757844Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T22:10:12.782634Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T22:38:53.021575Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T22:38:53.124694Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T23:11:25.614175Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T23:11:25.787682Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-04T23:40:55.612939Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-04T23:40:55.851033Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T00:10:34.365902Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T00:10:34.795232Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T00:39:05.166789Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T00:39:05.609369Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T01:11:39.839035Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T01:11:39.977931Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T01:39:45.501882Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T01:39:45.687204Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T02:08:34.215891Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T02:08:34.318648Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T02:36:40.269157Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T02:36:40.640628Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T03:09:47.443111Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T03:09:47.896653Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T03:42:22.998160Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T03:42:23.291384Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T04:06:36.315018Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-05T04:06:36.960477Z     info    cache   generated new workload certificate      latency=645.230432ms ttl=23h59m59.039545425s
+2021-06-05T04:06:36.960611Z     info    sds     SDS: PUSH       resource=default
+2021-06-05T04:11:45.942876Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T04:11:46.270883Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T04:40:17.096174Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T04:40:17.332798Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T05:09:45.659947Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T05:09:45.849978Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T05:38:41.734517Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T05:38:42.064932Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T06:11:28.961996Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T06:11:29.053787Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T06:43:53.995853Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T06:43:54.434430Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T07:12:01.761155Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T07:12:02.131768Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T07:43:15.784720Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T07:43:16.025197Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T08:15:31.309929Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T08:15:31.566707Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T08:47:09.155542Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T08:47:09.335658Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T09:14:40.815842Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T09:14:41.032622Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T09:46:08.681976Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T09:46:08.902041Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T10:18:07.628515Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T10:18:07.779247Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T10:45:47.128841Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T10:45:47.220613Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T11:14:16.778940Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T11:14:17.160815Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T11:45:21.483184Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T11:45:21.903083Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T12:12:41.872977Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T12:12:42.118412Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T12:40:22.906469Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T12:40:22.962791Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T13:12:06.962329Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T13:12:07.342386Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T13:44:59.809421Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T13:45:00.114342Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T14:15:14.312878Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T14:15:14.769035Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T14:44:42.119578Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T14:44:42.373255Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T15:15:23.270189Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T15:15:23.672443Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T15:43:51.667830Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T15:43:51.682488Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T16:06:36.480520Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-05T16:06:37.419048Z     info    cache   generated new workload certificate      latency=938.244734ms ttl=23h59m59.580972629s
+2021-06-05T16:06:37.419209Z     info    sds     SDS: PUSH       resource=default
+2021-06-05T16:14:28.842184Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T16:14:29.112396Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T16:45:11.471400Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T16:45:11.783080Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T17:14:45.930398Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T17:14:46.108941Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T17:45:05.121647Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T17:45:05.145917Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T18:17:41.669746Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T18:17:42.074396Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T18:48:10.104370Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T18:48:10.350062Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T19:21:19.753518Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T19:21:19.969524Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T19:54:14.514044Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T19:54:14.858959Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T20:26:04.328934Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T20:26:04.449615Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T20:55:05.426946Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T20:55:05.860666Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T21:24:24.171480Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T21:24:24.228938Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T21:57:01.927913Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T21:57:02.315822Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T22:27:47.122084Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T22:27:47.176004Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T22:55:37.234018Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T22:55:37.631764Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T23:27:42.506237Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T23:27:42.646437Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-05T23:59:26.588385Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-05T23:59:26.965218Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T00:26:58.780170Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T00:26:58.798559Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T00:57:04.150190Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T00:57:04.280203Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T01:29:46.277124Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T01:29:46.310735Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T02:01:24.729465Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T02:01:24.843601Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T02:32:17.945541Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T02:32:18.344921Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T02:59:32.882772Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T02:59:33.095984Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T03:29:07.745519Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T03:29:07.826512Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T03:58:42.560854Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T03:58:42.778270Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T04:06:37.209821Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-06T04:06:38.083763Z     info    cache   generated new workload certificate      latency=873.68511ms ttl=23h59m58.916259448s
+2021-06-06T04:06:38.083885Z     info    sds     SDS: PUSH       resource=default
+2021-06-06T04:31:36.468488Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T04:31:36.725469Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T05:00:28.352223Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T05:00:28.618537Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T05:31:17.440900Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T05:31:17.516690Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T06:04:04.642789Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T06:04:04.887252Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T06:32:09.971453Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T06:32:10.121814Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T06:59:32.765637Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T06:59:33.264873Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T07:32:20.385096Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T07:32:20.566545Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T08:01:46.241088Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T08:01:46.329515Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T08:30:44.499610Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T08:30:44.745647Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T09:02:04.538780Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T09:02:04.714172Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T09:30:16.549822Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T09:30:16.968106Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T10:02:21.258782Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T10:02:21.752554Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T10:32:47.926228Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T10:32:48.296059Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T11:04:59.282536Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T11:04:59.676079Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T11:35:20.275981Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T11:35:20.781287Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T12:05:37.703324Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T12:05:37.944040Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T12:36:07.753251Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T12:36:08.018799Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T13:05:03.509343Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T13:05:03.533995Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T13:33:05.391602Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T13:33:05.872021Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T14:00:22.784467Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T14:00:22.892000Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T14:33:30.996340Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T14:33:31.115987Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T15:06:34.406879Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T15:06:34.759807Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T15:34:13.555137Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T15:34:13.608480Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T16:04:25.062768Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T16:04:25.457928Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T16:06:37.542193Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-06T16:06:38.419227Z     info    cache   generated new workload certificate      latency=876.745765ms ttl=23h59m59.580791045s
+2021-06-06T16:06:38.419383Z     info    sds     SDS: PUSH       resource=default
+2021-06-06T16:37:34.431145Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T16:37:34.582138Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T17:07:02.534471Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T17:07:02.919102Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T17:36:32.396306Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T17:36:32.667998Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T18:07:25.467079Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T18:07:25.680249Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T18:35:01.059986Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T18:35:01.196476Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T19:07:13.401521Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T19:07:13.778391Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T19:36:27.410887Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T19:36:27.715430Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T20:04:57.394329Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T20:04:57.809839Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T20:36:24.613502Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T20:36:24.859462Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T21:05:57.050594Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T21:05:57.422083Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T21:37:03.376262Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T21:37:03.837354Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T22:10:03.522482Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T22:10:03.799081Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T22:39:41.335316Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T22:39:41.837426Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T23:11:38.442569Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T23:11:38.498403Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-06T23:41:55.268579Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-06T23:41:55.370608Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T00:12:13.671594Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T00:12:13.708956Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T00:43:55.871165Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T00:43:55.952850Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T01:16:58.859151Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T01:16:58.976952Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T01:49:12.754570Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T01:49:12.801702Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T02:20:34.744604Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T02:20:35.232725Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T02:51:48.574431Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T02:51:48.700476Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T03:24:56.922571Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T03:24:57.085253Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T03:53:10.231958Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T03:53:10.515665Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T04:06:38.211461Z     info    ads     XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2021-06-07T04:06:38.843033Z     info    cache   generated new workload certificate      latency=631.202965ms ttl=23h59m59.156986558s
+2021-06-07T04:06:38.843127Z     info    sds     SDS: PUSH       resource=default
+2021-06-07T04:20:34.018453Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T04:20:34.183447Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T04:49:51.785763Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T04:49:51.811690Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T05:17:06.553530Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T05:17:06.677519Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T05:48:50.753452Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T05:48:51.243044Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+[2021-06-07T06:02:58.484Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 20 - "-" "curl/7.29.0" "0eeb43bb-d5ff-4484-a4cc-71aef61ff755" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:42070 - default
+2021-06-07T06:21:39.502462Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T06:21:39.900447Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+[2021-06-07T06:35:43.440Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 48 - "-" "curl/7.29.0" "7696365a-b533-4480-8c20-5bc812344567" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:57382 - default
+[2021-06-07T06:36:04.796Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 21 - "-" "curl/7.29.0" "656b4504-5bec-4ef6-a8ee-d841b3b6a2cd" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:57554 - default
+[2021-06-07T06:47:26.822Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 47 - "-" "curl/7.29.0" "14bbe48d-62e3-419d-ab06-b696e973745e" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:34698 - default
+[2021-06-07T06:47:34.150Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 75 - "-" "curl/7.29.0" "675c465f-7043-49e9-b486-ddeadb3b035b" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:34768 - default
+2021-06-07T06:50:28.657218Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T06:50:29.056448Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T07:19:22.158484Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T07:19:22.448506Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T07:52:17.466238Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T07:52:17.908660Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T08:25:16.053568Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T08:25:16.156716Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T08:52:50.158838Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T08:52:50.498510Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T09:16:12.616272Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T09:16:32.790814Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, connection error: desc = "transport: Error while dialing dial tcp 10.124.235.245:15012: i/o timeout"
+2021-06-07T09:16:33.087486Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T09:49:40.831424Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T09:49:41.233985Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+2021-06-07T10:20:44.270820Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T10:20:44.736996Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+[2021-06-07T10:50:39.009Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 46 - "-" "curl/7.29.0" "7620fe17-bcaf-49d6-bcad-51bbce5c5100" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:40066 - default
+2021-06-07T10:51:33.553972Z     warning envoy config    StreamAggregatedResources gRPC config stream closed: 14, transport is closing
+2021-06-07T10:51:33.956324Z     info    xdsproxy        connected to upstream XDS server: istiod.istio-system.svc:15012
+[2021-06-07T10:51:47.485Z] "GET / HTTP/1.1" 503 UF,URX upstream_reset_before_response_started{connection_failure,TLS_error:_268435581:SSL_routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED} - "TLS error: 268435581:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED" 0 195 56 - "-" "curl/7.29.0" "d5d223bc-603a-4b29-8fd7-04389dfb2be3" "temp2:8080" "10.124.234.163:8080" outbound|8080||temp2.prv1-example.svc.cluster.local - 10.124.235.198:8080 10.124.234.209:40672 - default
+
