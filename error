@@ -1,1 +1,5 @@
-Error from server (InternalError): Internal error occurred: failed calling webhook "namespace.sidecar-injector.istio.io": Post https://istiod.istio-system.svc:443/inject?timeout=10s: x509: certificate has expired or is not yet valid
+
+2021-06-28T14:04:14.758926Z     warning envoy config    StreamSecrets gRPC config stream closed: 2, failed to generate secret for ROOTCA: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.124.235.135:443: connect: connection timed out"
+2021-06-28T14:04:17.384085Z     info    ads     ADS: new connection for node:sidecar~10.124.234.44~temp1.prv1-example~prv1-example.svc.cluster.local-51
+2021-06-28T14:04:17.694100Z     warn    ca      ca request failed, starting attempt 1 in 107.114088ms
+2021-06-28T14:04:17.801537Z     warn    ca      ca request failed, starting attempt 2 in 181.716865ms
