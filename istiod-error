@@ -1,0 +1,1 @@
+Error from server (InternalError): Internal error occurred: failed calling webhook "namespace.sidecar-injector.istio.io": Post https://istiod.istio-system.svc:443/inject?timeout=10s: x509: certificate has expired or is not yet valid
