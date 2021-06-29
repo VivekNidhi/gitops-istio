@@ -1,9 +1,1 @@
- k get  cr,certificate,issuer  -n istio-system
-NAME                                              APPROVED   DENIED   READY   ISSUER         REQUESTOR                                         AGE
-certificaterequest.cert-manager.io/istiod-5pvqg   True                True    vault-issuer   system:serviceaccount:cert-manager:cert-manager   29m
-
-NAME                                 READY   SECRET       AGE
-certificate.cert-manager.io/istiod   True    istiod-tls   19d
-
-NAME                                  READY   AGE
-issuer.cert-manager.io/vault-issuer   True    8m18s
+failed to generate secret for ROOTCA: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.124.235.135:443: connect: connection timed out"
