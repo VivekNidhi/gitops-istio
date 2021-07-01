@@ -1,1 +1,6 @@
-failed to generate secret for ROOTCA: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.124.235.135:443: connect: connection timed out"
+ k get po -n cert-manager
+NAME                                       READY   STATUS    RESTARTS   AGE
+cert-manager-7954bbb9c9-l82pb              1/1     Running   0          2d2h
+cert-manager-cainjector-5f948f5767-qn7bq   1/1     Running   0          26d
+cert-manager-istio-csr-78486f4fc9-db7xl    1/1     Running   0          2d2h
+cert-manager-webhook-b5b8f4db4-vkljh       1/1     Running   0          26d
