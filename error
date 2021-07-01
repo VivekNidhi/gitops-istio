@@ -4,3 +4,51 @@ cert-manager-7954bbb9c9-l82pb              1/1     Running   0          2d2h
 cert-manager-cainjector-5f948f5767-qn7bq   1/1     Running   0          26d
 cert-manager-istio-csr-78486f4fc9-db7xl    1/1     Running   0          2d2h
 cert-manager-webhook-b5b8f4db4-vkljh       1/1     Running   0          26d
+
+
+
+ k logs -f  cert-manager-istio-csr-78486f4fc9-db7xl   -n cert-manager
+I0629 07:20:24.894315       1 tls.go:90] serving_certificate "msg"="fetching initial serving certificate"
+I0629 07:20:25.091476       1 tls.go:230] serving_certificate "msg"="created serving CertificateRequest" "name"="cert-manager-istio-csr-7klwr" "namespace"="istio-system"
+E0629 07:21:25.107640       1 tls.go:137] serving_certificate "msg"="failed to fetch new serving certificate, retrying" "error"="failed to wait for CertificateRequest istio-system/cert-manager-istio-c                                     sr-7klwr to become ready: timed out waiting for the condition"
+I0629 07:21:25.353741       1 tls.go:230] serving_certificate "msg"="created serving CertificateRequest" "name"="cert-manager-istio-csr-bd4wc" "namespace"="istio-system"
+I0629 07:21:38.364199       1 tls.go:238] serving_certificate "msg"="serving CertificateRequest ready" "name"="cert-manager-istio-csr-bd4wc" "namespace"="istio-system"
+2021-06-29T07:21:38.364875Z     info    spiffe  Added 1 certs to trust domain cluster.local in peer cert verifier
+I0629 07:21:38.366262       1 tls.go:148] serving_certificate "msg"="fetched new serving certificate"
+I0629 07:21:38.366664       1 tls.go:102] serving_certificate "msg"="renewing serving certificate"  "renewal-time"=57600000000000
+I0629 07:21:38.401918       1 tls.go:248] serving_certificate "msg"="deleted serving CertificateRequest" "name"="cert-manager-istio-csr-bd4wc" "namespace"="istio-system"
+I0629 07:21:38.412041       1 server.go:102] certificate-provider "msg"="grpc serving"  "address"="[::]:6443"
+I0629 07:21:38.412061       1 namespace.go:143] ca-root-controller "msg"="starting controller" "configmap-name"="istio-ca-root-cert"
+I0629 07:21:38.412117       1 leaderelection.go:243] attempting to acquire leader lease istio-system/cert-manager-istio-csr-78486f4fc9-db7xl...
+I0629 07:21:38.412182       1 internal.go:373] ca-root-controller "msg"="starting metrics server" "configmap-name"="istio-ca-root-cert" "path"="/metrics"
+I0629 07:21:38.430998       1 leaderelection.go:253] successfully acquired lease istio-system/cert-manager-istio-csr-78486f4fc9-db7xl
+I0629 07:21:38.431111       1 recorder.go:98] ca-root-controller/events "msg"="Normal" "configmap-name"="istio-ca-root-cert" "message"="cert-manager-istio-csr-78486f4fc9-db7xl_80a34b28-0344-496c-995b-                                     6ed7dc5acda4 became leader" "object"={"kind":"ConfigMap","namespace":"istio-system","name":"cert-manager-istio-csr-78486f4fc9-db7xl","uid":"c0a76206-cd93-4108-8e79-f326dc450475","apiVersion":"v1","res                                     ourceVersion":"74028513"} "reason"="LeaderElection"
+I0629 07:21:38.431209       1 recorder.go:98] ca-root-controller/events "msg"="Normal" "configmap-name"="istio-ca-root-cert" "message"="cert-manager-istio-csr-78486f4fc9-db7xl_80a34b28-0344-496c-995b-                                     6ed7dc5acda4 became leader" "object"={"kind":"Lease","namespace":"istio-system","name":"cert-manager-istio-csr-78486f4fc9-db7xl","uid":"c9cb4dbb-6693-44f8-bbd2-3a4f551d8177","apiVersion":"coordination                                     .k8s.io/v1","resourceVersion":"74028514"} "reason"="LeaderElection"
+I0629 07:21:38.431733       1 controller.go:164] ca-root-controller/controller/namespace "msg"="Starting EventSource" "configmap-name"="istio-ca-root-cert" "reconciler group"="" "reconciler kind"="Nam                                     espace" "source"={"Type":{"metadata":{"creationTimestamp":null},"spec":{},"status":{}}}
+I0629 07:21:38.432289       1 controller.go:164] ca-root-controller/controller/configmap "msg"="Starting EventSource" "configmap-name"="istio-ca-root-cert" "reconciler group"="" "reconciler kind"="Con                                     figMap" "source"={"Type":{"metadata":{"creationTimestamp":null}}}
+I0629 07:21:38.532775       1 controller.go:174] ca-root-controller/controller/namespace "msg"="Starting Controller" "configmap-name"="istio-ca-root-cert" "reconciler group"="" "reconciler kind"="Name                                     space"
+I0629 07:21:38.533156       1 controller.go:206] ca-root-controller/controller/namespace "msg"="Starting workers" "configmap-name"="istio-ca-root-cert" "reconciler group"="" "reconciler kind"="Namespa                                     ce" "worker count"=1
+I0629 07:21:38.532921       1 controller.go:174] ca-root-controller/controller/configmap "msg"="Starting Controller" "configmap-name"="istio-ca-root-cert" "reconciler group"="" "reconciler kind"="Conf                                     igMap"
+I0629 07:21:38.533332       1 controller.go:206] ca-root-controller/controller/configmap "msg"="Starting workers" "configmap-name"="istio-ca-root-cert" "reconciler group"="" "reconciler kind"="ConfigM                                     ap" "worker count"=1
+I0629 23:21:38.367967       1 tls.go:116] serving_certificate "msg"="renewing serving certificate"
+I0629 23:21:38.842978       1 tls.go:230] serving_certificate "msg"="created serving CertificateRequest" "name"="cert-manager-istio-csr-t5nmz" "namespace"="istio-system"
+I0629 23:21:39.855308       1 tls.go:238] serving_certificate "msg"="serving CertificateRequest ready" "name"="cert-manager-istio-csr-t5nmz" "namespace"="istio-system"
+2021-06-29T23:21:39.856433Z     info    spiffe  Added 1 certs to trust domain cluster.local in peer cert verifier
+I0629 23:21:39.857143       1 tls.go:148] serving_certificate "msg"="fetched new serving certificate"
+I0629 23:21:39.857183       1 tls.go:102] serving_certificate "msg"="renewing serving certificate"  "renewal-time"=57600000000000
+I0629 23:21:39.864634       1 tls.go:248] serving_certificate "msg"="deleted serving CertificateRequest" "name"="cert-manager-istio-csr-t5nmz" "namespace"="istio-system"
+I0630 15:21:39.858091       1 tls.go:116] serving_certificate "msg"="renewing serving certificate"
+I0630 15:21:40.052295       1 tls.go:230] serving_certificate "msg"="created serving CertificateRequest" "name"="cert-manager-istio-csr-58fxw" "namespace"="istio-system"
+I0630 15:21:40.565197       1 tls.go:238] serving_certificate "msg"="serving CertificateRequest ready" "name"="cert-manager-istio-csr-58fxw" "namespace"="istio-system"
+2021-06-30T15:21:40.565579Z     info    spiffe  Added 1 certs to trust domain cluster.local in peer cert verifier
+I0630 15:21:40.566172       1 tls.go:148] serving_certificate "msg"="fetched new serving certificate"
+I0630 15:21:40.566203       1 tls.go:102] serving_certificate "msg"="renewing serving certificate"  "renewal-time"=57600000000000
+I0630 15:21:40.576226       1 tls.go:248] serving_certificate "msg"="deleted serving CertificateRequest" "name"="cert-manager-istio-csr-58fxw" "namespace"="istio-system"
+I0701 07:21:40.567601       1 tls.go:116] serving_certificate "msg"="renewing serving certificate"
+I0701 07:21:40.993795       1 tls.go:230] serving_certificate "msg"="created serving CertificateRequest" "name"="cert-manager-istio-csr-8czq7" "namespace"="istio-system"
+I0701 07:21:42.004204       1 tls.go:238] serving_certificate "msg"="serving CertificateRequest ready" "name"="cert-manager-istio-csr-8czq7" "namespace"="istio-system"
+2021-07-01T07:21:42.004721Z     info    spiffe  Added 1 certs to trust domain cluster.local in peer cert verifier
+I0701 07:21:42.005274       1 tls.go:148] serving_certificate "msg"="fetched new serving certificate"
+I0701 07:21:42.005309       1 tls.go:102] serving_certificate "msg"="renewing serving certificate"  "renewal-time"=57600000000000
+I0701 07:21:42.013286       1 tls.go:248] serving_certificate "msg"="deleted serving CertificateRequest" "name"="cert-manager-istio-csr-8czq7" "namespace"="istio-system"
+
