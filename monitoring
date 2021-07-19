@@ -1,0 +1,15 @@
+cert-manager also ships itself with a Prometheus endpoint
+11:39
+cert_manager_istio_csr_tls_provider_certificate_requests
+cert_manager_istio_csr_grpc_server_handled_total
+These two metrics on istio-csr will give you both success/failed CSR requests, as well as the success/rejected grpc connections
+
+
+
+
+
+
+JoshVanL  11:41 AM
+Here is the relevant part of the istio-csr Helm chart for metrics https://github.com/cert-manager/istio-csr/blob/ee7939da2e72f78353d9b42d7584c280f4ff8d78/deploy/charts/istio-csr/values.yaml#L22
+deploy/charts/istio-csr/values.yaml:22
+  metrics:
