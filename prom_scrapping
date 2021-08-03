@@ -5,3 +5,8 @@ kubectl exec -it deploy/apigateway -c istio-proxy -- curl localhost:15090/stats/
 
 Control Plan:
 kubectl exec -it -n istio-system deploy/istiod -- curl localhost:15014/metrics
+
+
+Check workload scarps are working
+kubectl exec -it deploy/helloworld -c istio-proxy \
+-- curl localhost:15090/stats/prometheus
