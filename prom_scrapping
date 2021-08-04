@@ -1,6 +1,9 @@
 kubectl exec -n istio-system deploy/istiod-1-8-3 -- pilot-discovery request GET /debug/registryz
 
 kubectl exec -it deploy/apigateway -c istio-proxy -- curl localhost:15090/stats/prometheus
+Four golden signals
+kubectl -n istioinaction exec -it deploy/apigateway -c istio-proxy \
+-- curl localhost:15000/stats/prometheus | grep istio_requests_total
 
 
 Control Plan:
