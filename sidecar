@@ -1,0 +1,17 @@
+021-08-06T09:42:21.372970Z     warning envoy config    StreamSecrets gRPC config stream closed: 2, failed to generate secret for default: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.124.235.190:443: i/o timeout"
+2021-08-06T09:42:22.061213Z     info    ads     ADS: new connection for node:sidecar~10.124.234.239~temp.prv1-exampleistio~prv1-exampleistio.svc.cluster.local-4479
+2021-08-06T09:42:22.377646Z     warn    ca      ca request failed, starting attempt 1 in 97.202386ms
+2021-08-06T09:42:22.475498Z     warn    ca      ca request failed, starting attempt 2 in 206.824452ms
+2021-08-06T09:42:22.683109Z     warn    ca      ca request failed, starting attempt 3 in 407.844414ms
+2021-08-06T09:42:23.091956Z     warn    ca      ca request failed, starting attempt 4 in 829.524772ms
+2021-08-06T09:42:23.921871Z     info    ads     ADS: "@" sidecar~10.124.234.239~temp.prv1-exampleistio~prv1-exampleistio.svc.cluster.local-4479 terminated rpc error: code = Canceled desc = context canceled
+2021-08-06T09:42:23.922103Z     warning envoy config    StreamSecrets gRPC config stream closed: 2, failed to generate secret for ROOTCA: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.124.235.190:443: i/o timeout"
+2021-08-06T09:42:37.517255Z     info    ads     ADS: new connection for node:sidecar~10.124.234.239~temp.prv1-exampleistio~prv1-exampleistio.svc.cluster.local-4480
+2021-08-06T09:42:37.969260Z     warn    ca      ca request failed, starting attempt 1 in 100.617513ms
+2021-08-06T09:42:38.070681Z     warn    ca      ca request failed, starting attempt 2 in 206.691398ms
+2021-08-06T09:42:38.278227Z     warn    ca      ca request failed, starting attempt 3 in 373.930613ms
+2021-08-06T09:42:38.653093Z     warn    ca      ca request failed, starting attempt 4 in 867.430102ms
+2021-08-06T09:42:39.521316Z     info    ads     ADS: "@" sidecar~10.124.234.239~temp.prv1-exampleistio~prv1-exampleistio.svc.cluster.local-4480 terminated rpc error: code = Canceled desc = context canceled
+2021-08-06T09:42:39.521582Z     warning envoy config    StreamSecrets gRPC config stream closed: 2, failed to generate secret for default: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.124.235.190:443: i/o timeout"
+2021-08-06T09:42:44.121423Z     info    ads     ADS: new connection for node:sidecar~10.124.234.239~temp.prv1-exampleistio~prv1-exampleistio.svc.cluster.local-4481
+2021-08-06T09:43:00.644672Z     info    ads     ADS: new connection for node:sidecar~10.124.234.239~temp.prv1-exampleistio~prv1-exampleistio.svc.cluster.local-4482
