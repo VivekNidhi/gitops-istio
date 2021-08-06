@@ -1,3 +1,7 @@
+failed to generate secret for ROOTCA: failed to generate workload certificate: create certificate: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.124.235.190:443: i/o timeout"
+^C
+[vivek_nidhi_natwestmarkets_com@prv-bstn-js]~% k exec  temp   -c istio-proxy  -n prv1-exampleistio -- nc -zv 10.124.235.190 443   
+
 Deleting Certificate Request Objects:
 ===========================================
 for i in $(kubectl get cr -n istio-system | awk {'print $1}'); do kubectl delete cr $i -n istio-system; done
