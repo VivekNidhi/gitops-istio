@@ -5,9 +5,9 @@ kind: ServiceAccount
 metadata:
   labels:
     app.kubernetes.io/name: cert-manager-istio-csr
-    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    helm.sh/chart: cert-manager-istio-csr-v0.2.1
     app.kubernetes.io/instance: RELEASE-NAME
-    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/version: "v0.2.0"
     app.kubernetes.io/managed-by: Helm
   name: cert-manager-istio-csr
 ---
@@ -17,9 +17,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   labels:
     app.kubernetes.io/name: cert-manager-istio-csr
-    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    helm.sh/chart: cert-manager-istio-csr-v0.2.1
     app.kubernetes.io/instance: RELEASE-NAME
-    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/version: "v0.2.0"
     app.kubernetes.io/managed-by: Helm
   name: cert-manager-istio-csr
 rules:
@@ -46,9 +46,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   labels:
     app.kubernetes.io/name: cert-manager-istio-csr
-    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    helm.sh/chart: cert-manager-istio-csr-v0.2.1
     app.kubernetes.io/instance: RELEASE-NAME
-    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/version: "v0.2.0"
     app.kubernetes.io/managed-by: Helm
   name: cert-manager-istio-csr
 roleRef:
@@ -66,9 +66,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   labels:
     app.kubernetes.io/name: cert-manager-istio-csr
-    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    helm.sh/chart: cert-manager-istio-csr-v0.2.1
     app.kubernetes.io/instance: RELEASE-NAME
-    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/version: "v0.2.0"
     app.kubernetes.io/managed-by: Helm
   name: cert-manager-istio-csr
   namespace: istio-system
@@ -83,6 +83,7 @@ rules:
   - "create"
   - "update"
   - "delete"
+  - "watch"
 - apiGroups:
   - "coordination.k8s.io"
   resources:
@@ -105,9 +106,9 @@ metadata:
   namespace: istio-system
   labels:
     app.kubernetes.io/name: cert-manager-istio-csr
-    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    helm.sh/chart: cert-manager-istio-csr-v0.2.1
     app.kubernetes.io/instance: RELEASE-NAME
-    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/version: "v0.2.0"
     app.kubernetes.io/managed-by: Helm
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -118,6 +119,28 @@ subjects:
   name: cert-manager-istio-csr
   namespace: default
 ---
+# Source: cert-manager-istio-csr/templates/metrics-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: cert-manager-istio-csr-metrics
+  labels:
+    app: cert-manager-istio-csr
+    app.kubernetes.io/name: cert-manager-istio-csr
+    helm.sh/chart: cert-manager-istio-csr-v0.2.1
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/version: "v0.2.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9402
+      targetPort: 9402
+      protocol: TCP
+      name: metrics
+  selector:
+    app: cert-manager-istio-csr
+---
 # Source: cert-manager-istio-csr/templates/service.yaml
 apiVersion: v1
 kind: Service
@@ -126,9 +149,9 @@ metadata:
   labels:
     app: cert-manager-istio-csr
     app.kubernetes.io/name: cert-manager-istio-csr
-    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    helm.sh/chart: cert-manager-istio-csr-v0.2.1
     app.kubernetes.io/instance: RELEASE-NAME
-    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/version: "v0.2.0"
     app.kubernetes.io/managed-by: Helm
 spec:
   type: ClusterIP
@@ -147,9 +170,9 @@ metadata:
   name: cert-manager-istio-csr
   labels:
     app.kubernetes.io/name: cert-manager-istio-csr
-    helm.sh/chart: cert-manager-istio-csr-v0.1.2
+    helm.sh/chart: cert-manager-istio-csr-v0.2.1
     app.kubernetes.io/instance: RELEASE-NAME
-    app.kubernetes.io/version: "v0.1.2"
+    app.kubernetes.io/version: "v0.2.0"
     app.kubernetes.io/managed-by: Helm
 spec:
   replicas: 1
@@ -164,10 +187,11 @@ spec:
       serviceAccountName: cert-manager-istio-csr
       containers:
       - name: cert-manager-istio-csr
-        image: "quay.io/jetstack/cert-manager-istio-csr:v0.1.2"
+        image: "quay.io/jetstack/cert-manager-istio-csr:v0.2.0"
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 6443
+        - containerPort: 9402
         readinessProbe:
           httpGet:
             port: 6060
@@ -177,22 +201,31 @@ spec:
         command: ["cert-manager-istio-csr"]
         args:
           - "--log-level=1"
+          - "--metrics-port=9402"
           - "--readiness-probe-port=6060"
           - "--readiness-probe-path=/readyz"
 
-          - "--cluster-id=Kubernetes"
-
-          - "--serving-address=0.0.0.0:6443"
-          - "--serving-certificate-duration=24h"
-          - "--root-ca-configmap-name=istio-ca-root-cert"
-
+            # cert-manager
           - "--certificate-namespace=istio-system"
-          - "--issuer-group=cert-manager.io"
-          - "--issuer-kind=Issuer"
           - "--issuer-name=istio-ca"
-          - "--trust-domain=cluster.local"
-          - "--max-client-certificate-duration=24h"
+          - "--issuer-kind=Issuer"
+          - "--issuer-group=cert-manager.io"
           - "--preserve-certificate-requests=false"
+
+            # tls
+          - "--root-ca-file="
+          - "--serving-certificate-dns-names=cert-manager-istio-csr.cert-manager.svc"
+          - "--serving-certificate-duration=1h"
+          - "--trust-domain=cluster.local"
+
+          # server
+          - "--cluster-id=Kubernetes"
+          - "--max-client-certificate-duration=1h"
+          - "--serving-address=0.0.0.0:6443"
+
+          # controller
+          - "--leader-election-namespace=istio-system"
+          - "--root-ca-configmap-name=istio-ca-root-cert"
 
         resources:
             {}
@@ -204,14 +237,24 @@ metadata:
   name: istiod
   namespace: istio-system
 spec:
-  duration: 24h
-  renewBefore: 12h
-  secretName: istiod-tls
   dnsNames:
   - istiod.istio-system.svc
   uris:
     - spiffe://cluster.local/ns/istio-system/sa/istiod-service-account
+  secretName: istiod-tls
+  # Here we use a duration of 1 hour by default based on NIST 800-204A
+  # recommendations (SM-DR13).
+  # https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-204A.pdf
+  # Warning: cert-manager does not allow a duration on Certificates of less
+  # than 1 hour.
+  duration: 1h
+  renewBefore: 30m
+  privateKey:
+    rotationPolicy: Always
+    algorithm: RSA
+    size: 2048
+  revisionHistoryLimit: 1
   issuerRef:
-    group: cert-manager.io
-    kind: Issuer
     name: istio-ca
+    kind: Issuer
+    group: cert-manager.io
