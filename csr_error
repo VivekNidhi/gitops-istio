@@ -1,1 +1,14 @@
 021-08-11T15:35:23.008146593Z2021-08-11T15:35:23.007932Z error klog grpc_server "msg"="failed to sign incoming client certificate signing request" "error"="failed to create CertificateRequest: Internal error occurred: failed calling webhook \"webhook.cert-manager.io\": Post https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s: no endpoints available for service \"cert-manager-webhook\"" "identities"="spiffe://cluster.local/ns/prv1-exampleistio/sa/hellovault" "serving_addr"="0.0.0.0:6443"
+
+
+
+
+k -n cert-manager logs -f cert-manager-webhook-5cfdcfb6bb-5b9j5
+W0812 11:43:41.466026       1 client_config.go:615] Neither --kubeconfig nor --master was specified.  Using the inClusterConfig.  This might not work.
+W0812 11:43:41.467552       1 client_config.go:615] Neither --kubeconfig nor --master was specified.  Using the inClusterConfig.  This might not work.
+I0812 11:43:41.467721       1 webhook.go:69] cert-manager/webhook "msg"="using dynamic certificate generating using CA stored in Secret resource"  "secret_name"="cert-manager-webhook-ca" "secret_namespace"="cert-manager"
+I0812 11:43:41.468049       1 server.go:150] cert-manager/webhook "msg"="listening for insecure healthz connections"  "address"=":6080"
+I0812 11:43:41.468101       1 server.go:163] cert-manager/webhook "msg"="listening for secure connections"  "address"=":10250"
+I0812 11:43:41.468117       1 server.go:189] cert-manager/webhook "msg"="registered pprof handlers"
+I0812 11:43:41.470279       1 reflector.go:219] Starting reflector *v1.Secret (1m0s) from external/io_k8s_client_go/tools/cache/reflector.go:167
+I0812 11:43:42.515338       1 dynamic_source.go:199] cert-manager/webhook "msg"="Updated serving TLS certificate"
