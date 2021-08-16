@@ -1,2 +1,4 @@
 https://github.com/cert-manager/istio-csr/blob/65407367362d369e13683bd554b07077ce48a459/pkg/server/auth.go#L34
 https://github.com/cert-manager/istio-csr/blob/65407367362d369e13683bd554b07077ce48a459/pkg/server/internal/extensions/extensions.go#L61
+
+https://github.com/cert-manager/istio-csr/blob/ee7939da2e72f78353d9b42d7584c280f4ff8d78/deploy/charts/istio-csr/values.yaml#L22
