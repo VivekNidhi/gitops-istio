@@ -1,1 +1,4 @@
 upstream connect error or disconnect/reset before headers. reset reason: remote reset
+
+
+[2021-09-02T07:20:49.898Z] "GET / HTTP/2" 503 UR upstream_reset_before_response_started{remote_reset} - "-" 0 85 1 - "127.0.0.6" "curl/7.29.0" "5022fe0f9b2e52758d0c6afd494ae6de" "mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local" "10.124.250.66:5021" inbound|5021|| 127.0.0.6:54897 10.124.250.66:5021 127.0.0.6:0 outbound_.5021_._.mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local default[2021-09-02T07:22:01.860Z] "GET / HTTP/2" 503 UR upstream_reset_before_response_started{remote_reset} - "-" 0 85 1 - "127.0.0.6" "curl/7.29.0" "3c181f733cba15149001e395e0d6ac6c" "mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local" "10.124.250.66:5021" inbound|5021|| 127.0.0.6:54897 10.124.250.66:5021 127.0.0.6:0 outbound_.5021_._.mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local default
