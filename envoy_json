@@ -5,7 +5,14 @@ Error on Istio side-car
 
 
 
+==================PROXY-CONFIG=====================================================================================================================================
+istioctl proxy-config endpoint mdxc-calculator-service-6b6d974c8-c5rfr.dev1-e2-dev-mdx | grep mdx
+10.124.248.132:5000              HEALTHY     OK                outbound|5000||profile-profileservergrpc.dev1-e2-dev-mdx.svc.cluster.local
+10.124.248.232:5021              HEALTHY     OK                outbound|5021||mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local
+10.124.250.143:5000              HEALTHY     OK                outbound|5000||profile-profileservergrpc.dev1-e2-dev-mdx.svc.cluster.local
+10.124.251.148:5021              HEALTHY     OK                outbound|5021||mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local
 
+=====================================================================================================================================================================
 
 
 -===================PROXY CONFIG ---> =================================================================================================================================
