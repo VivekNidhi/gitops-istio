@@ -3,6 +3,17 @@ Error on Istio side-car
 "GET / HTTP/2" 503 UR upstream_reset_before_response_started{remote_reset} - "-" 0 85 1 - "127.0.0.6" "curl/7.29.0" "d04fe6cb2b01bc45bde26bfde9608b4c" 
 "mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local" "10.124.251.148:5021" inbound|5021|| 127.0.0.6:39563 10.124.251.148:5021 127.0.0.6:0 outbound_.5021_._.mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local default
 
+
+
+
+
+
+-===================PROXY CONFIG ---> =================================================================================================================================
+istioctl proxy-config cluster mdxc-calculator-service-6b6d974c8-c5rfr.dev1-e2-dev-mdx --fqdn mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local
+SERVICE FQDN                                                  PORT     SUBSET     DIRECTION     TYPE     DESTINATION RULE
+mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local     5021     -          outbound      EDS
+=======================================================================================================================================================================
+
 =========================PROXY-CONFIG --> ROUTE ========================================================================================================================
 
 istioctl proxy-config route mdxc-calculator-service-6b6d974c8-c5rfr.dev1-e2-dev-mdx --name 5021 -o json
