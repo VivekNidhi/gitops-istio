@@ -361,3 +361,35 @@ istioctl pc listeners mdxc-calculator-service-6b6d974c8-pgcpm.dev1-e2-dev-mdx --
         ]
     }
 ]
+
+
+
+Endpoints:
+==============
+
+
+istioctl pc endpoint mdxc-calculator-service-6b6d974c8-pgcpm.dev1-e2-dev-mdx -o json | grep mdxc
+        "name": "outbound|5021||mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local",
+
+
+
+Route:
+
+istioctl pc route mdxc-calculator-service-6b6d974c8-pgcpm.dev1-e2-dev-mdx -o json | grep mdxc
+                "name": "mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local:5021",
+                    "mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local",
+                    "mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local:5021",
+                    "mdxc-calculator-service",
+                    "mdxc-calculator-service:5021",
+                    "mdxc-calculator-service.dev1-e2-dev-mdx.svc",
+                    "mdxc-calculator-service.dev1-e2-dev-mdx.svc:5021",
+                    "mdxc-calculator-service.dev1-e2-dev-mdx",
+                    "mdxc-calculator-service.dev1-e2-dev-mdx:5021",
+                            "cluster": "outbound|5021||mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local",
+                            "operation": "mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local:5021/*"
+                            "operation": "mdxc-calculator-service.dev1-e2-dev-mdx.svc.cluster.local:5021/*"
+
+
+
+
+
