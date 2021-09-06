@@ -1,0 +1,3 @@
+istioctl pc listeners mdxc-calculator-service-6b6d974c8-pgcpm.dev1-e2-dev-mdx --address 0.0.0.0 --port 5021
+ADDRESS PORT MATCH                        DESTINATION
+0.0.0.0 5021 Trans: raw_buffer; App: HTTP Route: 5021
