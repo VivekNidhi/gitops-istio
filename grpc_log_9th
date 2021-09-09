@@ -1,0 +1,2 @@
+[2021-09-09T08:15:14.308Z] "GET / HTTP/2" 503 UF upstream_reset_before_response_started{connection_failure} - "-" 0 91 1032 - "127.0.0.6" "curl/7.29.0" "e5b5dedf8f82308c1d890e15a297e9ac" "upstream_balancer" "10.124.235.139:50051" PassthroughCluster - 10.124.235.139:50051 127.0.0.6:0 - allow_any
+[2021-09-09T08:15:14.136Z] "- - -" 0 - - - "-" 505 2679 1206 - "-" "-" "-" "-" "10.124.234.195:443" inbound|443|| 127.0.0.6:37113 10.124.234.195:443 10.124.224.245:53156 prv1-example-grpc.l7.prv1.pe-sandbox.gcp.nwminfra.net
