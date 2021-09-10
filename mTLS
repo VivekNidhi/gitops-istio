@@ -1,0 +1,5 @@
+k get PeerAuthentication -A
+NAMESPACE           NAME                 MODE         AGE
+istio-system        mtls-strict-global   STRICT       2d1h
+nwm-ingress-nginx   mtls-permissive-ns   PERMISSIVE   2d1h
+prv1-exampleistio   mtls-global-grpc     PERMISSIVE   15h
