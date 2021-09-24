@@ -1,0 +1,3 @@
+nginx.ingress.kubernetes.io/backend-protocol: "GRPCS"
+    nginx.ingress.kubernetes.io/proxy-ssl-secret: "default/backend-tls"
+    nginx.ingress.kubernetes.io/proxy-ssl-server-name: "on"
